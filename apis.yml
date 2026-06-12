@@ -1,0 +1,119 @@
+aid: speechmatics
+name: Speechmatics
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/speechmatics/refs/heads/main/apis.yml
+created: 2026-06-12
+modified: 2026-06-12
+specificationVersion: "0.19"
+description: >
+  Speechmatics is an enterprise-grade speech intelligence platform headquartered in
+  Cambridge, UK, offering highly accurate speech-to-text APIs supporting 55+ languages
+  with batch and real-time transcription modes. The platform provides REST APIs for
+  batch transcription job management and WebSocket APIs for low-latency real-time
+  streaming transcription, along with speaker diarization, speaker identification,
+  custom vocabulary, sentiment analysis, translation, and topic detection. Speechmatics
+  also offers a Text-to-Speech API, a Voice Agent API (early access), and a Management
+  API for programmatic account and API key management. Deployments are available as
+  cloud SaaS, containerized on-premises, Kubernetes, and virtual appliance options.
+tags:
+  - Speech Recognition
+  - Speech-to-Text
+  - Transcription
+  - Real-Time Transcription
+  - Batch Transcription
+  - Speaker Diarization
+  - Text-to-Speech
+  - Voice AI
+  - NLP
+  - Audio Processing
+  - WebSocket
+  - REST
+apis:
+  - aid: speechmatics:batch-transcription-api
+    name: Speechmatics Batch Transcription API
+    description: REST API for submitting audio files for asynchronous batch transcription, managing jobs, and retrieving transcripts with support for 55+ languages, diarization, translation, and custom vocabulary.
+    humanURL: https://docs.speechmatics.com/speech-to-text/batch
+    baseURL: https://asr.api.speechmatics.com/v2
+    tags:
+      - Batch Transcription
+      - REST
+      - Speech-to-Text
+    properties:
+      - type: Documentation
+        url: https://docs.speechmatics.com/speech-to-text/batch
+      - type: OpenAPI
+        url: https://docs.speechmatics.com/batch.yaml
+      - type: APIReference
+        url: https://docs.speechmatics.com/api-ref/batch/speechmatics-asr-rest-api
+  - aid: speechmatics:realtime-transcription-api
+    name: Speechmatics Realtime Transcription API
+    description: WebSocket API for low-latency real-time streaming transcription supporting live audio input, speaker diarization, and partial/final transcript events.
+    humanURL: https://docs.speechmatics.com/speech-to-text/realtime
+    baseURL: wss://eu2.rt.speechmatics.com/v2
+    tags:
+      - Real-Time Transcription
+      - WebSocket
+      - Streaming
+      - Speech-to-Text
+    properties:
+      - type: Documentation
+        url: https://docs.speechmatics.com/speech-to-text/realtime
+      - type: APIReference
+        url: https://docs.speechmatics.com/api-ref/realtime-transcription-websocket
+  - aid: speechmatics:management-api
+    name: Speechmatics Management API
+    description: REST API for programmatic management of projects, API keys, usage tracking, and account administration.
+    humanURL: https://docs.speechmatics.com/api-ref/management/management-api
+    baseURL: https://mp.speechmatics.com/v1
+    tags:
+      - Management
+      - REST
+      - API Keys
+    properties:
+      - type: Documentation
+        url: https://docs.speechmatics.com/api-ref/management/management-api
+      - type: APIReference
+        url: https://docs.speechmatics.com/api-ref/management/management-api
+  - aid: speechmatics:text-to-speech-api
+    name: Speechmatics Text-to-Speech API
+    description: REST API for converting text to natural-sounding speech with multiple voice options and language support.
+    humanURL: https://docs.speechmatics.com/text-to-speech
+    baseURL: https://mp.speechmatics.com/v1
+    tags:
+      - Text-to-Speech
+      - REST
+      - Voice Synthesis
+    properties:
+      - type: Documentation
+        url: https://docs.speechmatics.com/text-to-speech
+common:
+  - type: Website
+    url: https://www.speechmatics.com/
+  - type: Documentation
+    url: https://docs.speechmatics.com/
+  - type: GitHubOrganization
+    url: https://github.com/speechmatics
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/speechmatics
+  - type: X
+    url: https://x.com/Speechmatics
+  - type: Blog
+    url: https://www.speechmatics.com/company/articles-and-news/articles
+  - type: Pricing
+    url: https://www.speechmatics.com/pricing
+  - type: StatusPage
+    url: https://status.speechmatics.com/
+  - type: Portal
+    url: https://portal.speechmatics.com/
+  - type: Discord
+    url: https://discord.gg/speechmatics
+  - type: Plans
+    url: plans/speechmatics-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/speechmatics-rate-limits.yml
+  - type: FinOps
+    url: finops/speechmatics-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

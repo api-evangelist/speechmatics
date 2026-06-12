@@ -1,0 +1,188 @@
+spec: API Commons Plans 0.1
+provider: Speechmatics
+providerId: speechmatics
+created: 2026-06-12
+modified: 2026-06-12
+reconciled: true
+url: https://www.speechmatics.com/pricing
+plans:
+  - name: Free
+    type: freemium
+    description: Free tier for developers exploring Speechmatics APIs with generous monthly allowances and no credit card required.
+    price: 0
+    currency: USD
+    quotas:
+      - name: Speech-to-Text Minutes
+        type: quota
+        limit: 2400
+        unit: minutes
+        period: monthly
+        metered: false
+      - name: Text-to-Speech Characters
+        type: quota
+        limit: 1000000
+        unit: characters
+        period: monthly
+        metered: false
+      - name: Concurrent Real-Time Sessions
+        type: quota
+        limit: 2
+        unit: sessions
+        metered: false
+      - name: Batch Jobs Rate
+        type: quota
+        limit: 1
+        unit: jobs_per_second
+        metered: false
+    features:
+      - name: 55+ Languages
+        type: boolean
+        value: true
+      - name: Speaker Diarization
+        type: boolean
+        value: true
+      - name: Custom Vocabulary
+        type: boolean
+        value: true
+      - name: Real-Time Transcription
+        type: boolean
+        value: true
+      - name: Batch Transcription
+        type: boolean
+        value: true
+      - name: Text-to-Speech
+        type: boolean
+        value: true
+
+  - name: Pro
+    type: paid
+    description: Usage-based plan for growing projects requiring higher concurrency, batch throughput, and email support. Includes the same free monthly allowance as the Free plan, with metered usage billed beyond that.
+    price: 0.24
+    priceUnit: per hour of real-time transcription
+    currency: USD
+    quotas:
+      - name: Speech-to-Text Minutes (Free Allowance)
+        type: quota
+        limit: 2400
+        unit: minutes
+        period: monthly
+        metered: false
+      - name: Batch Transcription (Metered)
+        type: metered
+        price: 0.005
+        priceUnit: per minute
+        currency: USD
+      - name: Real-Time Transcription (Metered)
+        type: metered
+        price: 0.0067
+        priceUnit: per minute
+        currency: USD
+      - name: Text-to-Speech Characters (Free Allowance)
+        type: quota
+        limit: 1000000
+        unit: characters
+        period: monthly
+        metered: false
+      - name: Concurrent Real-Time Sessions
+        type: quota
+        limit: 50
+        unit: sessions
+        metered: false
+      - name: Monthly Usage Cap
+        type: quota
+        limit: 6000
+        unit: hours
+        period: monthly
+        metered: false
+      - name: Batch Jobs Rate
+        type: quota
+        limit: 10
+        unit: jobs_per_second
+        metered: false
+    features:
+      - name: 55+ Languages
+        type: boolean
+        value: true
+      - name: Speaker Diarization
+        type: boolean
+        value: true
+      - name: Custom Vocabulary
+        type: boolean
+        value: true
+      - name: Real-Time Transcription
+        type: boolean
+        value: true
+      - name: Batch Transcription
+        type: boolean
+        value: true
+      - name: Text-to-Speech
+        type: boolean
+        value: true
+      - name: Volume Discount (20% off above 500 hrs/month)
+        type: boolean
+        value: true
+      - name: Email Support
+        type: boolean
+        value: true
+
+  - name: Enterprise
+    type: enterprise
+    description: Custom enterprise agreements with volume discounts, no rate limits, privacy-first on-premises or multi-region cloud deployment options, custom models and voices, and dedicated onboarding and technical support.
+    price: 0
+    priceNotes: Custom pricing, contact sales
+    currency: USD
+    quotas:
+      - name: Concurrent Real-Time Sessions
+        type: quota
+        limit: -1
+        unit: sessions
+        notes: Negotiated, no default limit
+        metered: false
+      - name: Monthly Usage Cap
+        type: quota
+        limit: -1
+        unit: hours
+        notes: No cap, custom arrangement
+        metered: false
+    features:
+      - name: No Rate Limits
+        type: boolean
+        value: true
+      - name: On-Premises Deployment
+        type: boolean
+        value: true
+      - name: Multi-Region Cloud
+        type: boolean
+        value: true
+      - name: Custom Models and Voices
+        type: boolean
+        value: true
+      - name: SLA
+        type: boolean
+        value: true
+      - name: Dedicated Onboarding and Technical Support
+        type: boolean
+        value: true
+      - name: Volume Discounts
+        type: boolean
+        value: true
+
+  - name: Startup Program
+    type: free
+    description: Startup program offering $50,000+ in Speechmatics API credits plus full API access and dedicated support for qualifying early-stage companies.
+    price: 0
+    priceNotes: Qualification required; contact Speechmatics
+    currency: USD
+    quotas:
+      - name: Credits
+        type: quota
+        limit: 50000
+        unit: USD_credits
+        metered: false
+    features:
+      - name: Full API Access
+        type: boolean
+        value: true
+      - name: Dedicated Support
+        type: boolean
+        value: true

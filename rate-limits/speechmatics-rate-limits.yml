@@ -1,0 +1,106 @@
+spec: API Commons Rate Limits 0.1
+provider: Speechmatics
+providerId: speechmatics
+created: 2026-06-12
+modified: 2026-06-12
+url: https://docs.speechmatics.com/speech-to-text/realtime/limits
+rateLimits:
+  - name: Real-Time Concurrent Sessions (Free)
+    scope: account
+    plan: Free
+    type: concurrency
+    limit: 2
+    unit: concurrent_sessions
+    notes: Maximum simultaneous WebSocket connections for Free tier accounts.
+
+  - name: Real-Time Concurrent Sessions (Pro)
+    scope: account
+    plan: Pro
+    type: concurrency
+    limit: 50
+    unit: concurrent_sessions
+    notes: Maximum simultaneous WebSocket connections for Pro tier accounts. Enterprise limits are negotiated.
+
+  - name: Monthly Usage Cap (Free)
+    scope: account
+    plan: Free
+    type: quota
+    limit: 20
+    unit: hours
+    period: monthly
+    notes: Maximum real-time transcription hours per month for Free tier.
+
+  - name: Monthly Usage Cap (Pro)
+    scope: account
+    plan: Pro
+    type: quota
+    limit: 6000
+    unit: hours
+    period: monthly
+    notes: Maximum real-time transcription hours per month for Pro tier. Contact support for higher limits.
+
+  - name: Batch Jobs Rate (Free)
+    scope: account
+    plan: Free
+    type: rate
+    limit: 1
+    unit: jobs_per_second
+    notes: Maximum batch transcription job submissions per second for Free tier.
+
+  - name: Batch Jobs Rate (Pro)
+    scope: account
+    plan: Pro
+    type: rate
+    limit: 10
+    unit: jobs_per_second
+    notes: Maximum batch transcription job submissions per second for Pro tier.
+
+  - name: WebSocket Session Duration
+    scope: session
+    plan: All
+    type: duration
+    limit: 48
+    unit: hours
+    notes: A single WebSocket session is automatically terminated after 48 hours of continuous connection.
+
+  - name: WebSocket Idle Timeout (No Audio or Ping/Pong)
+    scope: session
+    plan: All
+    type: timeout
+    limit: 3
+    unit: minutes
+    notes: Sessions with no audio data or ping/pong frames sent for 3 minutes will be automatically closed.
+
+  - name: WebSocket Idle Timeout (No Audio Only)
+    scope: session
+    plan: All
+    type: timeout
+    limit: 1
+    unit: hours
+    notes: If no audio data is sent for 1 hour (even if ping/pong active), the session is terminated.
+
+  - name: WebSocket Audio Buffer
+    scope: session
+    plan: All
+    type: buffer
+    limit: 10
+    unit: seconds
+    notes: The real-time API tolerates no more than 10 seconds of audio data buffered ahead. Excess AddAudio messages are held until buffer capacity is available.
+
+  - name: WebSocket AddAudio Message Queue
+    scope: session
+    plan: All
+    type: buffer
+    limit: 500
+    unit: messages
+    notes: No more than 500 individual AddAudio messages may be queued ahead without receiving AudioAdded acknowledgment.
+
+throttling:
+  httpStatusCode: 429
+  retryAfterHeader: Retry-After
+  notes: >
+    HTTP 429 Too Many Requests is returned when rate limits are exceeded on REST
+    (Batch/Management) API endpoints. For WebSocket sessions that are auto-terminated
+    due to limits, the server sends an in-band error message followed by a WebSocket
+    closing handshake with code 1008 (Policy Violation). Clients may reconnect
+    immediately after disconnection.

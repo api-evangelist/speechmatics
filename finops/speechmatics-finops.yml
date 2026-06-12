@@ -1,0 +1,130 @@
+spec: FinOps Framework 1.0
+focusVersion: "1.0"
+provider: Speechmatics
+providerId: speechmatics
+created: 2026-06-12
+modified: 2026-06-12
+url: https://www.speechmatics.com/pricing
+
+billingModel: usage-based
+billingCycle: monthly
+currency: USD
+invoicing: postpaid
+notes: >
+  Speechmatics uses a consumption-based billing model. Free monthly allowances
+  are included in all paid plans. Metered usage beyond the free allowance is billed
+  at per-minute rates. A 20% volume discount automatically applies to usage exceeding
+  500 hours per month per transcription type on the Pro plan. Enterprise customers
+  negotiate custom rates and volume commitments.
+
+focusColumns:
+  - column: ServiceName
+    value: Speechmatics Speech Intelligence API
+  - column: ServiceCategory
+    value: AI and Machine Learning
+  - column: ProviderName
+    value: Speechmatics
+  - column: Region
+    value: eu2, us, custom (Enterprise)
+  - column: ChargeType
+    values:
+      - Usage
+      - Credit
+  - column: BillingCurrency
+    value: USD
+
+meters:
+  - name: Batch Transcription
+    unit: minute
+    description: Audio minutes submitted for batch (asynchronous) transcription via REST API.
+    price: 0.005
+    priceUnit: per minute
+    currency: USD
+    freeAllowance: 2400
+    freeAllowanceUnit: minutes
+    freeAllowancePeriod: monthly
+    plans:
+      - Pro
+      - Enterprise
+    notes: >
+      Price is $0.005/min for Pro. Enterprise pricing is negotiated. Free allowance
+      of 2,400 minutes/month applies to both Free and Pro plans.
+
+  - name: Real-Time Transcription
+    unit: minute
+    description: Audio minutes processed via WebSocket streaming real-time transcription API.
+    price: 0.0067
+    priceUnit: per minute
+    currency: USD
+    freeAllowance: 2400
+    freeAllowanceUnit: minutes
+    freeAllowancePeriod: monthly
+    plans:
+      - Pro
+      - Enterprise
+    notes: >
+      Price is $0.0067/min (~$0.24/hr) for Pro. Enterprise pricing is negotiated.
+      Free allowance of 2,400 minutes/month shared with batch on Free and Pro plans.
+
+  - name: Text-to-Speech
+    unit: character
+    description: Characters converted to speech audio via the Text-to-Speech API.
+    price: 0
+    priceUnit: per character
+    currency: USD
+    freeAllowance: 1000000
+    freeAllowanceUnit: characters
+    freeAllowancePeriod: monthly
+    plans:
+      - Free
+      - Pro
+      - Enterprise
+    notes: >
+      1 million characters (~20 hours of audio) free per month on all plans.
+      Additional usage pricing available on request.
+
+discounts:
+  - name: Volume Discount
+    type: automatic
+    threshold: 500
+    thresholdUnit: hours
+    thresholdPeriod: monthly
+    discount: 20
+    discountUnit: percent
+    plans:
+      - Pro
+    notes: >
+      Automatic 20% discount applied to usage exceeding 500 hours per month
+      per transcription type (batch or real-time) on the Pro plan.
+
+  - name: Startup Program Credits
+    type: credits
+    amount: 50000
+    currency: USD
+    plans:
+      - Startup Program
+    notes: >
+      Qualifying early-stage companies receive $50,000+ in Speechmatics API credits
+      plus dedicated support. Contact Speechmatics to apply.
+
+principles:
+  - name: Consumption Visibility
+    description: >
+      Usage and spend can be monitored through the Speechmatics portal, with per-project
+      usage tracking via the Management API to attribute costs across teams or products.
+  - name: Free Tier Access
+    description: >
+      A generous free tier (2,400 minutes/month speech-to-text, 1M characters/month TTS)
+      enables developers to evaluate and prototype without incurring charges.
+  - name: Automatic Volume Discounts
+    description: >
+      Pro plan customers automatically receive a 20% discount once usage exceeds 500
+      hours/month per transcription type, rewarding growth without requiring contract changes.
+  - name: Cost Predictability (Enterprise)
+    description: >
+      Enterprise customers can negotiate fixed commitments or caps to achieve predictable
+      monthly spend, including on-premises deployment to eliminate per-minute cloud charges.
+  - name: No Storage Charges
+    description: >
+      Speechmatics does not store audio files, transcripts, or configuration data after
+      processing, eliminating storage cost components from the billing model.
