@@ -1,0 +1,42 @@
+{
+  "type": "transcription",
+  "transcription_config": {
+    "language": "en",
+    "model": "enhanced",
+    "diarization": "speaker",
+    "additional_vocab": [
+      {
+        "content": "Speechmatics",
+        "sounds_like": ["speechmatics"]
+      }
+    ],
+    "punctuation_overrides": {
+      "sensitivity": 0.5
+    }
+  },
+  "translation_config": {
+    "target_languages": ["fr", "de"]
+  },
+  "summarization_config": {
+    "content_type": "auto",
+    "summary_length": "brief",
+    "summary_type": "paragraphs"
+  },
+  "sentiment_analysis_config": {},
+  "notification_config": [
+    {
+      "url": "https://example.com/callback",
+      "contents": ["transcript"],
+      "method": "post"
+    }
+  ],
+  "tracking": {
+    "title": "Customer Support Call",
+    "reference": "/calls/2026/06/12/001",
+    "tags": ["support", "q2-2026"],
+    "details": {
+      "customer_id": "cust-12345",
+      "agent": "Jane Doe"
+    }
+  }
+}

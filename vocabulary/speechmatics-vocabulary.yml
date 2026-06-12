@@ -1,0 +1,71 @@
+vocabulary:
+  provider: speechmatics
+  description: Domain vocabulary for Speechmatics speech intelligence APIs
+  terms:
+    - term: ASR
+      definition: Automatic Speech Recognition — converting spoken audio to text.
+    - term: batch transcription
+      definition: Asynchronous processing of pre-recorded audio files for transcription.
+    - term: real-time transcription
+      definition: Low-latency streaming transcription of live audio via WebSocket.
+    - term: diarization
+      definition: The process of identifying and labeling different speakers in audio.
+      variants:
+        - speaker diarization
+        - channel diarization
+    - term: job
+      definition: A transcription task submitted to the Speechmatics batch API, identified by a unique job ID.
+    - term: transcript
+      definition: The text output produced by ASR processing of an audio file.
+    - term: custom vocabulary
+      definition: User-supplied words or phrases (additional_vocab) added to improve recognition accuracy.
+    - term: language model
+      definition: A statistical model used to recognize speech in a specific language; selected via the language parameter.
+    - term: operating point
+      definition: Deprecated model quality selector (standard or enhanced); replaced by the model parameter.
+    - term: model
+      definition: Quality/speed tradeoff selector for transcription (standard or enhanced).
+    - term: ITN
+      definition: Inverse Text Normalization — converting spoken numbers and entities to written form (e.g. "twenty dollars" → "$20").
+    - term: language pack
+      definition: The bundled language model and vocabulary for a specific language.
+    - term: notification config
+      definition: Webhook callback configuration for job completion events.
+    - term: tracking data
+      definition: Customer-supplied metadata attached to a job (title, reference, tags, details).
+    - term: summarization
+      definition: Automatic generation of a summary from transcribed content.
+    - term: sentiment analysis
+      definition: Detection of positive, neutral, or negative sentiment in transcript segments.
+    - term: topic detection
+      definition: Identification of main topics discussed in the transcribed audio.
+    - term: auto chapters
+      definition: Automatic division of transcript into titled, summarized sections.
+    - term: audio events
+      definition: Detection and timestamping of non-speech audio occurrences (e.g. music).
+    - term: translation
+      definition: Machine translation of transcript content into target languages.
+    - term: language identification
+      definition: Automatic detection of the language spoken in audio when not specified.
+    - term: speaker identification
+      definition: Matching detected speakers against a set of known speaker identifiers.
+    - term: Flow API
+      definition: WebSocket API for building real-time voice AI agent conversations.
+    - term: TTS
+      definition: Text-to-Speech — synthesis of natural-sounding audio from text input.
+    - term: management API
+      definition: REST API for administering Speechmatics projects and API keys.
+    - term: project
+      definition: An organizational grouping of API keys and usage within a Speechmatics account.
+    - term: API key
+      definition: Authentication credential for accessing Speechmatics APIs; scoped to a product and optional region.
+    - term: SRT
+      definition: SubRip subtitle format — a timed text format produced by the batch transcription API.
+    - term: partial transcript
+      definition: An intermediate, unfinished transcription result returned before the final result.
+    - term: final transcript
+      definition: A confirmed transcription result for a completed utterance or audio segment.
+    - term: endpointing
+      definition: Detection of the end of a spoken utterance in real-time transcription.
+    - term: audio filtering
+      definition: Suppression of transcription for audio below a volume threshold.

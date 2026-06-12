@@ -1,0 +1,298 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.speechmatics.com/schema/job-config",
+  "title": "JobConfig",
+  "description": "Configuration object for a Speechmatics batch transcription job.",
+  "type": "object",
+  "required": ["type"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["transcription"],
+      "description": "The type of job. Currently only 'transcription' is supported."
+    },
+    "transcription_config": {
+      "$ref": "#/definitions/TranscriptionConfig"
+    },
+    "translation_config": {
+      "$ref": "#/definitions/TranslationConfig"
+    },
+    "language_identification_config": {
+      "$ref": "#/definitions/LanguageIdentificationConfig"
+    },
+    "summarization_config": {
+      "$ref": "#/definitions/SummarizationConfig"
+    },
+    "sentiment_analysis_config": {
+      "type": "object",
+      "description": "Enable sentiment analysis on the transcript."
+    },
+    "topic_detection_config": {
+      "$ref": "#/definitions/TopicDetectionConfig"
+    },
+    "auto_chapters_config": {
+      "type": "object",
+      "description": "Enable automatic chapter detection."
+    },
+    "audio_events_config": {
+      "$ref": "#/definitions/AudioEventsConfig"
+    },
+    "output_config": {
+      "$ref": "#/definitions/OutputConfig"
+    },
+    "notification_config": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/NotificationConfig"
+      },
+      "description": "Webhook callbacks to invoke on job completion."
+    },
+    "tracking": {
+      "$ref": "#/definitions/TrackingData"
+    },
+    "fetch_data": {
+      "$ref": "#/definitions/DataFetchConfig"
+    },
+    "fetch_text": {
+      "$ref": "#/definitions/DataFetchConfig"
+    }
+  },
+  "definitions": {
+    "TranscriptionConfig": {
+      "type": "object",
+      "required": ["language"],
+      "properties": {
+        "language": {
+          "type": "string",
+          "description": "ISO language code for the audio (e.g. 'en', 'fr', 'de', 'auto')."
+        },
+        "domain": {
+          "type": "string",
+          "description": "Specialized domain (e.g. 'finance', 'medical')."
+        },
+        "output_locale": {
+          "type": "string",
+          "description": "ISO locale for the output text."
+        },
+        "model": {
+          "type": "string",
+          "enum": ["standard", "enhanced"],
+          "description": "Model quality selector."
+        },
+        "additional_vocab": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["content"],
+            "properties": {
+              "content": {
+                "type": "string"
+              },
+              "sounds_like": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "description": "Custom vocabulary words/phrases."
+        },
+        "diarization": {
+          "type": "string",
+          "enum": ["none", "speaker", "channel"],
+          "description": "Speaker attribution mode."
+        },
+        "channel_diarization_labels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._]+$"
+          }
+        },
+        "enable_entities": {
+          "type": "boolean",
+          "description": "Include entity annotations in results."
+        },
+        "punctuation_overrides": {
+          "type": "object",
+          "properties": {
+            "sensitivity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "permitted_marks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "speaker_diarization_config": {
+          "type": "object",
+          "properties": {
+            "prefer_current_speaker": {"type": "boolean"},
+            "speaker_sensitivity": {"type": "number", "minimum": 0, "maximum": 1},
+            "get_speakers": {"type": "boolean"}
+          }
+        },
+        "transcript_filtering_config": {
+          "type": "object",
+          "properties": {
+            "remove_disfluencies": {"type": "boolean"},
+            "replacements": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["from", "to"],
+                "properties": {
+                  "from": {"type": "string"},
+                  "to": {"type": "string"}
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "audio_filtering_config": {
+          "type": "object",
+          "properties": {
+            "volume_threshold": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            }
+          }
+        }
+      }
+    },
+    "TranslationConfig": {
+      "type": "object",
+      "required": ["target_languages"],
+      "properties": {
+        "target_languages": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "string"
+          },
+          "description": "ISO language codes for translation targets."
+        }
+      }
+    },
+    "LanguageIdentificationConfig": {
+      "type": "object",
+      "properties": {
+        "expected_languages": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "low_confidence_action": {
+          "type": "string",
+          "enum": ["allow", "reject", "use_default_language"]
+        },
+        "default_language": {
+          "type": "string"
+        }
+      }
+    },
+    "SummarizationConfig": {
+      "type": "object",
+      "properties": {
+        "content_type": {
+          "type": "string",
+          "enum": ["auto", "informative", "conversational"]
+        },
+        "summary_length": {
+          "type": "string",
+          "enum": ["brief", "detailed"],
+          "default": "brief"
+        },
+        "summary_type": {
+          "type": "string",
+          "enum": ["paragraphs", "bullets"]
+        }
+      }
+    },
+    "TopicDetectionConfig": {
+      "type": "object",
+      "properties": {
+        "topics": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "AudioEventsConfig": {
+      "type": "object",
+      "properties": {
+        "types": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "OutputConfig": {
+      "type": "object",
+      "properties": {
+        "srt_overrides": {
+          "type": "object",
+          "properties": {
+            "max_line_length": {"type": "integer"},
+            "max_lines": {"type": "integer"}
+          }
+        }
+      }
+    },
+    "NotificationConfig": {
+      "type": "object",
+      "required": ["url"],
+      "properties": {
+        "url": {"type": "string", "format": "uri"},
+        "contents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["jobinfo", "transcript", "transcript.json-v2", "transcript.txt", "transcript.srt", "data", "text"]
+          }
+        },
+        "method": {
+          "type": "string",
+          "enum": ["post", "put"]
+        },
+        "auth_headers": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "TrackingData": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "reference": {"type": "string"},
+        "tags": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "details": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "DataFetchConfig": {
+      "type": "object",
+      "required": ["url"],
+      "properties": {
+        "url": {"type": "string", "format": "uri"},
+        "auth_headers": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

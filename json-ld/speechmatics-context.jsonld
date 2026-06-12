@@ -1,0 +1,108 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "sm": "https://www.speechmatics.com/schema/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "provider": {
+      "@id": "sm:provider",
+      "@type": "@id"
+    },
+    "Job": "sm:Job",
+    "Transcript": "sm:Transcript",
+    "TranscriptionConfig": "sm:TranscriptionConfig",
+    "JobConfig": "sm:JobConfig",
+    "ApiKey": "sm:ApiKey",
+    "Project": "sm:Project",
+    "RecognitionResult": "sm:RecognitionResult",
+    "SpeakerLabel": "sm:SpeakerLabel",
+    "jobId": {
+      "@id": "sm:jobId",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "sm:status",
+      "@type": "xsd:string"
+    },
+    "language": {
+      "@id": "sm:language",
+      "@type": "xsd:string"
+    },
+    "model": {
+      "@id": "sm:model",
+      "@type": "xsd:string"
+    },
+    "diarization": {
+      "@id": "sm:diarization",
+      "@type": "xsd:string"
+    },
+    "duration": {
+      "@id": "sm:duration",
+      "@type": "xsd:integer"
+    },
+    "createdAt": {
+      "@id": "sm:createdAt",
+      "@type": "xsd:dateTime"
+    },
+    "startTime": {
+      "@id": "sm:startTime",
+      "@type": "xsd:decimal"
+    },
+    "endTime": {
+      "@id": "sm:endTime",
+      "@type": "xsd:decimal"
+    },
+    "confidence": {
+      "@id": "sm:confidence",
+      "@type": "xsd:decimal"
+    },
+    "content": {
+      "@id": "sm:content",
+      "@type": "xsd:string"
+    },
+    "speaker": {
+      "@id": "sm:speaker",
+      "@type": "xsd:string"
+    },
+    "channel": {
+      "@id": "sm:channel",
+      "@type": "xsd:string"
+    },
+    "additionalVocab": {
+      "@id": "sm:additionalVocab",
+      "@container": "@list"
+    },
+    "targetLanguages": {
+      "@id": "sm:targetLanguages",
+      "@container": "@list"
+    },
+    "projectId": {
+      "@id": "sm:projectId",
+      "@type": "xsd:integer"
+    },
+    "apiKeyId": {
+      "@id": "sm:apiKeyId",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "email": "schema:email",
+    "provider_name": "Speechmatics",
+    "provider_url": "https://www.speechmatics.com/",
+    "provider_docs": "https://docs.speechmatics.com/",
+    "apis": [
+      {
+        "name": "Batch Transcription API",
+        "url": "https://asr.api.speechmatics.com/v2"
+      },
+      {
+        "name": "Realtime Transcription API",
+        "url": "wss://eu2.rt.speechmatics.com/v2"
+      },
+      {
+        "name": "Management API",
+        "url": "https://mp.speechmatics.com/v1"
+      }
+    ]
+  }
+}

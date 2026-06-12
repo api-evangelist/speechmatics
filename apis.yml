@@ -5,6 +5,19 @@ image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/speechmatics/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
+artifacts:
+  - type: OpenAPI
+    url: openapi/speechmatics-batch-transcription-api-openapi.yml
+  - type: OpenAPI
+    url: openapi/speechmatics-management-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/speechmatics-job-config.json
+  - type: JSONLDContext
+    url: json-ld/speechmatics-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/speechmatics-vocabulary.yml
+  - type: Example
+    url: examples/speechmatics-batch-transcription-job.json
 specificationVersion: "0.19"
 description: >
   Speechmatics is an enterprise-grade speech intelligence platform headquartered in
