@@ -16,7 +16,7 @@ artifacts:
     url: json-ld/speechmatics-context.jsonld
   - type: Vocabulary
     url: vocabulary/speechmatics-vocabulary.yml
-  - type: Example
+  - type: Examples
     url: examples/speechmatics-batch-transcription-job.json
 specificationVersion: "0.19"
 description: >
