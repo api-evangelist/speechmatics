@@ -101,6 +101,12 @@ apis:
       - type: Documentation
         url: https://docs.speechmatics.com/text-to-speech
 common:
+  - type: TrustCenter
+    url: security/speechmatics-trust-center.yml
+  - type: DomainSecurity
+    url: security/speechmatics-domain-security.yml
+  - type: Authentication
+    url: authentication/speechmatics-authentication.yml
   - type: Website
     url: https://www.speechmatics.com/
   - type: Documentation

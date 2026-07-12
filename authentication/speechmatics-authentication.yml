@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/speechmatics-batch-transcription-api-openapi.yml, openapi/speechmatics-management-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: bearerAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'Bearer token authentication. Use the format: Bearer $API_KEY_OR_JWT'
+  sources:
+  - openapi/speechmatics-batch-transcription-api-openapi.yml
+  - openapi/speechmatics-management-api-openapi.yml
