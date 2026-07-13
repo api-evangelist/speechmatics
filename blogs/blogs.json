@@ -2,13 +2,14 @@
   "repo": "speechmatics",
   "feeds": [
     {
-      "source": "https://www.speechmatics.com/company/articles-and-news/articles",
-      "feed_url": "",
-      "saved": 1,
-      "method": "agent-scrape"
+      "source": "https://x.com/Speechmatics",
+      "feed_url": "https://x.com/Speechmatics",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 2,
-  "fetched": "2026-06-27T13:11:46Z",
-  "agent_pulled": "2026-06-27"
+  "fetched": "2026-07-11T11:50:51Z",
+  "agent_pulled": "2026-07-04"
 }
