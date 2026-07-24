@@ -1,0 +1,256 @@
+openapi: 3.0.3
+info:
+  title: Speechmatics Batch Transcription API Keys Projects API
+  version: 2.0.0
+  description: The Speechmatics Automatic Speech Recognition REST API is used to submit ASR jobs and receive the results. The supported job type is transcription of audio files. Supports 55+ languages, speaker diarization, translation, summarization, sentiment analysis, topic detection, and custom vocabulary.
+  contact:
+    email: support@speechmatics.com
+  x-providerName: speechmatics
+  x-serviceName: batch-transcription-api
+servers:
+- url: https://asr.api.speechmatics.com/v2
+  description: Speechmatics Batch ASR API (EU)
+- url: https://eu1.asr.api.speechmatics.com/v2
+  description: Speechmatics Batch ASR API (EU1)
+- url: https://usa.asr.api.speechmatics.com/v2
+  description: Speechmatics Batch ASR API (USA)
+security:
+- bearerAuth: []
+tags:
+- name: Projects
+paths:
+  /projects:
+    get:
+      summary: Get all projects
+      operationId: listProjects
+      tags:
+      - Projects
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectsResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '410':
+          description: Gone
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create a new project
+      operationId: createProject
+      tags:
+      - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '410':
+          description: Gone
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /projects/{project_id}:
+    parameters:
+    - name: project_id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: The project ID.
+    get:
+      summary: Get a project by ID
+      operationId: getProject
+      tags:
+      - Projects
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Project was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '410':
+          description: Project Gone
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update a project
+      operationId: updateProject
+      tags:
+      - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          description: Not Found
+    delete:
+      summary: Delete a project
+      operationId: deleteProject
+      tags:
+      - Projects
+      responses:
+        '204':
+          description: Project deleted.
+        '403':
+          description: Forbidden (outstanding payments)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Project was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '410':
+          description: Gone
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CreateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        contract_id:
+          type: integer
+          description: Optional contract ID for the project.
+        name:
+          type: string
+          description: The name of the project.
+        description:
+          type: string
+          description: A description of the project and its intended use.
+    Project:
+      type: object
+      required:
+      - project_id
+      properties:
+        project_id:
+          type: integer
+        is_default:
+          type: boolean
+          nullable: true
+        is_active:
+          type: boolean
+          nullable: true
+        name:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+    ProjectsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Project'
+    ErrorResponse:
+      type: object
+      required:
+      - code
+      - error
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        error:
+          type: string
+          description: The error message.
+        detail:
+          type: string
+          description: Additional error details.
+    UpdateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The new name for the project.
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Bearer token authentication. Use the format: Bearer $API_KEY_OR_JWT'

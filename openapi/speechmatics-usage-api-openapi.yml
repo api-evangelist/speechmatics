@@ -1,0 +1,165 @@
+openapi: 3.0.3
+info:
+  title: Speechmatics Batch Transcription API Keys Usage API
+  version: 2.0.0
+  description: The Speechmatics Automatic Speech Recognition REST API is used to submit ASR jobs and receive the results. The supported job type is transcription of audio files. Supports 55+ languages, speaker diarization, translation, summarization, sentiment analysis, topic detection, and custom vocabulary.
+  contact:
+    email: support@speechmatics.com
+  x-providerName: speechmatics
+  x-serviceName: batch-transcription-api
+servers:
+- url: https://asr.api.speechmatics.com/v2
+  description: Speechmatics Batch ASR API (EU)
+- url: https://eu1.asr.api.speechmatics.com/v2
+  description: Speechmatics Batch ASR API (EU1)
+- url: https://usa.asr.api.speechmatics.com/v2
+  description: Speechmatics Batch ASR API (USA)
+security:
+- bearerAuth: []
+tags:
+- name: Usage
+paths:
+  /usage:
+    get:
+      summary: Get usage statistics
+      operationId: getUsage
+      tags:
+      - Usage
+      parameters:
+      - name: since
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Include usage after this date (YYYY-MM-DD, inclusive).
+      - name: until
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Include usage before this date (YYYY-MM-DD, inclusive).
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate Limited
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    UsageResponse:
+      type: object
+      required:
+      - since
+      - until
+      - summary
+      - details
+      properties:
+        since:
+          type: string
+          format: date-time
+        until:
+          type: string
+          format: date-time
+        summary:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageDetails'
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageDetails'
+    UsageDetails:
+      type: object
+      required:
+      - mode
+      - type
+      - count
+      - duration_hrs
+      properties:
+        mode:
+          type: string
+          enum:
+          - batch
+        type:
+          type: string
+          enum:
+          - transcription
+        language:
+          type: string
+          example: en
+        count:
+          type: integer
+        duration_hrs:
+          type: number
+          format: float
+    ErrorResponse:
+      type: object
+      required:
+      - code
+      - error
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+          minimum: 100
+        error:
+          type: string
+          description: The error message.
+          enum:
+          - Bad Request
+          - File Expired
+          - Forbidden
+          - Resource Locked
+          - Format Not Supported
+          - Internal Server Error
+          - Job error
+          - Job Expired
+          - Job In Progress
+          - Job is not of type transcription
+          - Job not found
+          - Job rejected
+          - Job rejected due to invalid audio
+          - Job rejected due to invalid text
+          - Malformed request
+          - Missing callback
+          - Missing data_file
+          - No language selected
+          - Not Implemented
+          - Permission Denied
+          - Requested product not available
+          - Transcription not ready
+          - Log file not available
+          - Unprocessable Entity
+          - Max concurrent running jobs exceeded
+        detail:
+          type: string
+          description: The details of the error.
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Bearer token authentication. Use the format: Bearer $API_KEY_OR_JWT'
