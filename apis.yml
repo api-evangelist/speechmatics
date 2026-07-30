@@ -1,7 +1,20 @@
 aid: speechmatics
 name: Speechmatics
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/speechmatics.png
 url: https://raw.githubusercontent.com/api-evangelist/speechmatics/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -43,63 +56,107 @@ tags:
   - WebSocket
   - REST
 apis:
-  - aid: speechmatics:batch-transcription-api
-    name: Speechmatics Batch Transcription API
-    description: REST API for submitting audio files for asynchronous batch transcription, managing jobs, and retrieving transcripts with support for 55+ languages, diarization, translation, and custom vocabulary.
-    humanURL: https://docs.speechmatics.com/speech-to-text/batch
-    baseURL: https://asr.api.speechmatics.com/v2
-    tags:
-      - Batch Transcription
-      - REST
-      - Speech-to-Text
-    properties:
-      - type: Documentation
-        url: https://docs.speechmatics.com/speech-to-text/batch
-      - type: OpenAPI
-        url: https://docs.speechmatics.com/batch.yaml
-      - type: APIReference
-        url: https://docs.speechmatics.com/api-ref/batch/speechmatics-asr-rest-api
-  - aid: speechmatics:realtime-transcription-api
-    name: Speechmatics Realtime Transcription API
-    description: WebSocket API for low-latency real-time streaming transcription supporting live audio input, speaker diarization, and partial/final transcript events.
-    humanURL: https://docs.speechmatics.com/speech-to-text/realtime
-    baseURL: wss://eu2.rt.speechmatics.com/v2
-    tags:
-      - Real-Time Transcription
-      - WebSocket
-      - Streaming
-      - Speech-to-Text
-    properties:
-      - type: Documentation
-        url: https://docs.speechmatics.com/speech-to-text/realtime
-      - type: APIReference
-        url: https://docs.speechmatics.com/api-ref/realtime-transcription-websocket
-  - aid: speechmatics:management-api
-    name: Speechmatics Management API
-    description: REST API for programmatic management of projects, API keys, usage tracking, and account administration.
-    humanURL: https://docs.speechmatics.com/api-ref/management/management-api
-    baseURL: https://mp.speechmatics.com/v1
-    tags:
-      - Management
-      - REST
-      - API Keys
-    properties:
-      - type: Documentation
-        url: https://docs.speechmatics.com/api-ref/management/management-api
-      - type: APIReference
-        url: https://docs.speechmatics.com/api-ref/management/management-api
-  - aid: speechmatics:text-to-speech-api
-    name: Speechmatics Text-to-Speech API
-    description: REST API for converting text to natural-sounding speech with multiple voice options and language support.
-    humanURL: https://docs.speechmatics.com/text-to-speech
-    baseURL: https://mp.speechmatics.com/v1
-    tags:
-      - Text-to-Speech
-      - REST
-      - Voice Synthesis
-    properties:
-      - type: Documentation
-        url: https://docs.speechmatics.com/text-to-speech
+- aid: speechmatics:realtime-transcription-api
+  name: Speechmatics Realtime Transcription API
+  description: >-
+    WebSocket API for low-latency real-time streaming transcription supporting live audio input, speaker
+    diarization, and partial/final transcript events.
+  humanURL: https://docs.speechmatics.com/speech-to-text/realtime
+  baseURL: wss://eu2.rt.speechmatics.com/v2
+  tags:
+  - Real-Time Transcription
+  - WebSocket
+  - Streaming
+  - Speech-to-Text
+  properties:
+  - type: Documentation
+    url: https://docs.speechmatics.com/speech-to-text/realtime
+  - type: APIReference
+    url: https://docs.speechmatics.com/api-ref/realtime-transcription-websocket
+- aid: speechmatics:management-api
+  name: Speechmatics Management API
+  description: >-
+    REST API for programmatic management of projects, API keys, usage tracking, and account administration.
+  humanURL: https://docs.speechmatics.com/api-ref/management/management-api
+  baseURL: https://mp.speechmatics.com/v1
+  tags:
+  - Management
+  - REST
+  - API Keys
+  properties:
+  - type: Documentation
+    url: https://docs.speechmatics.com/api-ref/management/management-api
+  - type: APIReference
+    url: https://docs.speechmatics.com/api-ref/management/management-api
+- aid: speechmatics:text-to-speech-api
+  name: Speechmatics Text-to-Speech API
+  description: >-
+    REST API for converting text to natural-sounding speech with multiple voice options and language support.
+  humanURL: https://docs.speechmatics.com/text-to-speech
+  baseURL: https://mp.speechmatics.com/v1
+  tags:
+  - Text-to-Speech
+  - REST
+  - Voice Synthesis
+  properties:
+  - type: Documentation
+    url: https://docs.speechmatics.com/text-to-speech
+- aid: speechmatics:speechmatics-api-keys-api
+  name: Speechmatics API Keys API
+  description: The API Keys API from Speechmatics — 2 operation(s) for api keys.
+  humanURL: https://docs.speechmatics.com/speech-to-text/batch
+  baseURL: https://asr.api.speechmatics.com/v2
+  tags:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/speechmatics-api-keys-api-openapi.yml
+  - type: Documentation
+    url: https://docs.speechmatics.com/speech-to-text/batch
+  - type: APIReference
+    url: https://docs.speechmatics.com/api-ref/batch/speechmatics-asr-rest-api
+- aid: speechmatics:speechmatics-jobs-api
+  name: Speechmatics Jobs API
+  description: The Jobs API from Speechmatics — 4 operation(s) for jobs.
+  humanURL: https://docs.speechmatics.com/speech-to-text/batch
+  baseURL: https://asr.api.speechmatics.com/v2
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/speechmatics-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.speechmatics.com/speech-to-text/batch
+  - type: APIReference
+    url: https://docs.speechmatics.com/api-ref/batch/speechmatics-asr-rest-api
+- aid: speechmatics:speechmatics-projects-api
+  name: Speechmatics Projects API
+  description: The Projects API from Speechmatics — 2 operation(s) for projects.
+  humanURL: https://docs.speechmatics.com/speech-to-text/batch
+  baseURL: https://asr.api.speechmatics.com/v2
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/speechmatics-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.speechmatics.com/speech-to-text/batch
+  - type: APIReference
+    url: https://docs.speechmatics.com/api-ref/batch/speechmatics-asr-rest-api
+- aid: speechmatics:speechmatics-usage-api
+  name: Speechmatics Usage API
+  description: The Usage API from Speechmatics — 1 operation(s) for usage.
+  humanURL: https://docs.speechmatics.com/speech-to-text/batch
+  baseURL: https://asr.api.speechmatics.com/v2
+  tags:
+  - Usage
+  properties:
+  - type: OpenAPI
+    url: openapi/speechmatics-usage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.speechmatics.com/speech-to-text/batch
+  - type: APIReference
+    url: https://docs.speechmatics.com/api-ref/batch/speechmatics-asr-rest-api
 common:
   - type: AgenticAccess
     url: agentic-access/speechmatics-agentic-access.yml
