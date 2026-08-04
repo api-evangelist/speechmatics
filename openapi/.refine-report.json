@@ -1,0 +1,20 @@
+{
+  "provider": "speechmatics",
+  "sources": [
+    "speechmatics-api-keys-api-openapi.yml",
+    "speechmatics-jobs-api-openapi.yml",
+    "speechmatics-projects-api-openapi.yml",
+    "speechmatics-usage-api-openapi.yml"
+  ],
+  "outputs": [
+    "speechmatics-api-keys-api-openapi.yml",
+    "speechmatics-jobs-api-openapi.yml",
+    "speechmatics-projects-api-openapi.yml",
+    "speechmatics-usage-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
