@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Speechmatics Batch Transcription API Keys Jobs API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://asr.api.speechmatics.com/v2/jobs",
+            "params": [
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for paginating by creation time."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit on number of items returned."
+              },
+              {
+                "name": "include_deleted",
+                "value": "",
+                "type": "query",
+                "description": "Include deleted jobs in response."
+              }
+            ]
+          },
+          "docs": "List all jobs"
+        },
+        {
+          "info": {
+            "name": "Create a new job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://asr.api.speechmatics.com/v2/jobs",
+            "headers": [
+              {
+                "name": "X-SM-Processing-Data",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "config",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "data_file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a new job"
+        },
+        {
+          "info": {
+            "name": "Get job details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://asr.api.speechmatics.com/v2/jobs/:jobid",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "a1b2c3d4e5",
+                "type": "path",
+                "description": "ID of the job."
+              }
+            ]
+          },
+          "docs": "Get job details"
+        },
+        {
+          "info": {
+            "name": "Delete a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://asr.api.speechmatics.com/v2/jobs/:jobid",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "a1b2c3d4e5",
+                "type": "path",
+                "description": "ID of the job to delete."
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "Force terminate a running job."
+              }
+            ]
+          },
+          "docs": "Delete a job"
+        },
+        {
+          "info": {
+            "name": "Get transcript for a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://asr.api.speechmatics.com/v2/jobs/:jobid/transcript",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "a1b2c3d4e5",
+                "type": "path"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Transcription output format (default json-v2)."
+              }
+            ]
+          },
+          "docs": "Get transcript for a job"
+        },
+        {
+          "info": {
+            "name": "Get log file for a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://asr.api.speechmatics.com/v2/jobs/:jobid/log",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "a1b2c3d4e5",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get log file for a job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

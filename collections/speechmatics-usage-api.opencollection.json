@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Speechmatics Batch Transcription API Keys Usage API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get usage statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://asr.api.speechmatics.com/v2/usage",
+            "params": [
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Include usage after this date (YYYY-MM-DD, inclusive)."
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query",
+                "description": "Include usage before this date (YYYY-MM-DD, inclusive)."
+              }
+            ]
+          },
+          "docs": "Get usage statistics"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2454 @@
+{
+  "item": [
+    {
+      "id": "d75f152b-ad26-4e83-9e79-c65b3628a0b8",
+      "name": "Jobs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cdda9301-94d5-4bbf-be6e-b05c1576a901",
+          "name": "Create a new job",
+          "request": {
+            "name": "Create a new job",
+            "description": {},
+            "url": {
+              "path": [
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "On-prem processing settings JSON (parallel_engines, user_id).",
+                "key": "X-SM-Processing-Data",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "config",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) JSON containing a JobConfig model."
+                },
+                {
+                  "key": "data_file",
+                  "type": "file",
+                  "description": "The audio data file to be processed."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "33f6d448-a0f1-45f2-ad53-dce860a35575",
+              "name": "Job created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "On-prem processing settings JSON (parallel_engines, user_id).",
+                    "key": "X-SM-Processing-Data",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) JSON containing a JobConfig model.",
+                        "type": "text/plain"
+                      },
+                      "key": "config",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The audio data file to be processed.",
+                        "type": "text/plain"
+                      },
+                      "key": "data_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a1b2c3d4e5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f087e90b-a4e5-4b86-b90f-517ca89d90ea",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "On-prem processing settings JSON (parallel_engines, user_id).",
+                    "key": "X-SM-Processing-Data",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) JSON containing a JobConfig model.",
+                        "type": "text/plain"
+                      },
+                      "key": "config",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The audio data file to be processed.",
+                        "type": "text/plain"
+                      },
+                      "key": "data_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b82f8bb4-511b-485c-bae7-927d6c05cf58",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "On-prem processing settings JSON (parallel_engines, user_id).",
+                    "key": "X-SM-Processing-Data",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) JSON containing a JobConfig model.",
+                        "type": "text/plain"
+                      },
+                      "key": "config",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The audio data file to be processed.",
+                        "type": "text/plain"
+                      },
+                      "key": "data_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a562eb67-3b48-4b4a-9975-0861f8011683",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "On-prem processing settings JSON (parallel_engines, user_id).",
+                    "key": "X-SM-Processing-Data",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) JSON containing a JobConfig model.",
+                        "type": "text/plain"
+                      },
+                      "key": "config",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The audio data file to be processed.",
+                        "type": "text/plain"
+                      },
+                      "key": "data_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0cb2371d-60ac-4429-918b-8c8a434a2b3b",
+              "name": "Rate Limited",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "On-prem processing settings JSON (parallel_engines, user_id).",
+                    "key": "X-SM-Processing-Data",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) JSON containing a JobConfig model.",
+                        "type": "text/plain"
+                      },
+                      "key": "config",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The audio data file to be processed.",
+                        "type": "text/plain"
+                      },
+                      "key": "data_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "161ca670-9a1d-4463-b01b-2a0c48a23b92",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "On-prem processing settings JSON (parallel_engines, user_id).",
+                    "key": "X-SM-Processing-Data",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) JSON containing a JobConfig model.",
+                        "type": "text/plain"
+                      },
+                      "key": "config",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The audio data file to be processed.",
+                        "type": "text/plain"
+                      },
+                      "key": "data_file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "157d1168-bd37-4ef1-8aad-72d0d8a02d02",
+          "name": "List all jobs",
+          "request": {
+            "name": "List all jobs",
+            "description": {},
+            "url": {
+              "path": [
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "created_before",
+                  "value": "<dateTime>",
+                  "description": "Cursor for paginating by creation time."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Limit on number of items returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_deleted",
+                  "value": "<boolean>",
+                  "description": "Include deleted jobs in response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce09b2c4-7d33-4c35-abfd-b5e0ec85f7b6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "created_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_deleted",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobs\": [\n    {\n      \"created_at\": \"1965-03-25T15:06:37.826Z\",\n      \"data_name\": \"string\",\n      \"id\": \"a1b2c3d4e5\",\n      \"status\": \"running\",\n      \"text_name\": \"string\",\n      \"duration\": 7440,\n      \"config\": {\n        \"type\": \"transcription\",\n        \"fetch_data\": {\n          \"url\": \"string\",\n          \"auth_headers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"fetch_text\": {\n          \"url\": \"string\",\n          \"auth_headers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"transcription_config\": {\n          \"language\": \"string\",\n          \"domain\": \"string\",\n          \"output_locale\": \"string\",\n          \"model\": \"enhanced\",\n          \"operating_point\": \"standard\",\n          \"additional_vocab\": [\n            {\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sounds_like\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sounds_like\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"punctuation_overrides\": {\n            \"sensitivity\": 0.0005218485921909544,\n            \"permitted_marks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"diarization\": \"channel\",\n          \"channel_diarization_labels\": [\n            \".tb1w1h7WF\",\n            \"HoAmxGRDw4B\"\n          ],\n          \"enable_entities\": false,\n          \"max_delay_mode\": \"flexible\",\n          \"audio_filtering_config\": {\n            \"volume_threshold\": 0.21270030446206567\n          },\n          \"transcript_filtering_config\": {\n            \"remove_disfluencies\": false,\n            \"replacements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"speaker_diarization_config\": {\n            \"prefer_current_speaker\": true,\n            \"speaker_sensitivity\": 0.23885481423623822,\n            \"get_speakers\": true,\n            \"speakers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"notification_config\": [\n          {\n            \"url\": \"string\",\n            \"contents\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"method\": \"post\",\n            \"auth_headers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"url\": \"string\",\n            \"contents\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"method\": \"post\",\n            \"auth_headers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"tracking\": {\n          \"title\": \"string\",\n          \"reference\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ],\n          \"details\": {\n            \"key_0\": true,\n            \"key_1\": 7091.294668897409,\n            \"key_2\": false\n          }\n        },\n        \"output_config\": {\n          \"srt_overrides\": {\n            \"max_line_length\": 3204,\n            \"max_lines\": 3685\n          }\n        },\n        \"translation_config\": {\n          \"target_languages\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"language_identification_config\": {\n          \"expected_languages\": [\n            \"string\",\n            \"string\"\n          ],\n          \"low_confidence_action\": \"allow\",\n          \"default_language\": \"string\"\n        },\n        \"summarization_config\": {\n          \"content_type\": \"informative\",\n          \"summary_length\": \"brief\",\n          \"summary_type\": \"paragraphs\"\n        },\n        \"sentiment_analysis_config\": {},\n        \"topic_detection_config\": {\n          \"topics\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"auto_chapters_config\": {},\n        \"audio_events_config\": {\n          \"types\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      },\n      \"lang\": \"string\",\n      \"errors\": [\n        {\n          \"timestamp\": \"2021-07-14 11:53:49.242000+00:00\",\n          \"message\": \"Audio fetch error, http status 418\"\n        },\n        {\n          \"timestamp\": \"2021-07-14 11:53:49.242000+00:00\",\n          \"message\": \"Audio fetch error, http status 418\"\n        }\n      ]\n    },\n    {\n      \"created_at\": \"2017-12-12T14:35:11.434Z\",\n      \"data_name\": \"string\",\n      \"id\": \"a1b2c3d4e5\",\n      \"status\": \"done\",\n      \"text_name\": \"string\",\n      \"duration\": 4045,\n      \"config\": {\n        \"type\": \"transcription\",\n        \"fetch_data\": {\n          \"url\": \"string\",\n          \"auth_headers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"fetch_text\": {\n          \"url\": \"string\",\n          \"auth_headers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"transcription_config\": {\n          \"language\": \"string\",\n          \"domain\": \"string\",\n          \"output_locale\": \"string\",\n          \"model\": \"enhanced\",\n          \"operating_point\": \"standard\",\n          \"additional_vocab\": [\n            {\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sounds_like\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"content\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sounds_like\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"punctuation_overrides\": {\n            \"sensitivity\": 0.29099902498338204,\n            \"permitted_marks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"diarization\": \"none\",\n          \"channel_diarization_labels\": [\n            \"jJ\",\n            \"mASwgIZlQ\"\n          ],\n          \"enable_entities\": true,\n          \"max_delay_mode\": \"flexible\",\n          \"audio_filtering_config\": {\n            \"volume_threshold\": 10.043530304503223\n          },\n          \"transcript_filtering_config\": {\n            \"remove_disfluencies\": true,\n            \"replacements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"speaker_diarization_config\": {\n            \"prefer_current_speaker\": false,\n            \"speaker_sensitivity\": 0.8582219998933565,\n            \"get_speakers\": false,\n            \"speakers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"notification_config\": [\n          {\n            \"url\": \"string\",\n            \"contents\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"method\": \"put\",\n            \"auth_headers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"url\": \"string\",\n            \"contents\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"method\": \"put\",\n            \"auth_headers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"tracking\": {\n          \"title\": \"string\",\n          \"reference\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ],\n          \"details\": {\n            \"key_0\": 5213\n          }\n        },\n        \"output_config\": {\n          \"srt_overrides\": {\n            \"max_line_length\": 620,\n            \"max_lines\": 109\n          }\n        },\n        \"translation_config\": {\n          \"target_languages\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"language_identification_config\": {\n          \"expected_languages\": [\n            \"string\",\n            \"string\"\n          ],\n          \"low_confidence_action\": \"allow\",\n          \"default_language\": \"string\"\n        },\n        \"summarization_config\": {\n          \"content_type\": \"conversational\",\n          \"summary_length\": \"brief\",\n          \"summary_type\": \"bullets\"\n        },\n        \"sentiment_analysis_config\": {},\n        \"topic_detection_config\": {\n          \"topics\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"auto_chapters_config\": {},\n        \"audio_events_config\": {\n          \"types\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      },\n      \"lang\": \"string\",\n      \"errors\": [\n        {\n          \"timestamp\": \"2021-07-14 11:53:49.242000+00:00\",\n          \"message\": \"Audio fetch error, http status 418\"\n        },\n        {\n          \"timestamp\": \"2021-07-14 11:53:49.242000+00:00\",\n          \"message\": \"Audio fetch error, http status 418\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13d72696-6bcb-4e9d-a3d4-7809f8668da4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "created_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_deleted",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84f04f25-6ff7-436e-b63b-2c55bdeb370b",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "created_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_deleted",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4be62d66-de22-4906-b115-3c9d8c38a2d7",
+              "name": "Rate Limited",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "created_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_deleted",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b77fc081-0a1b-4cb8-91c5-71f949c63086",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "created_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include_deleted",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12df78f1-f244-4bab-a94e-9c861d81372c",
+          "name": "Get job details",
+          "request": {
+            "name": "Get job details",
+            "description": {},
+            "url": {
+              "path": [
+                "jobs",
+                ":jobid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobid",
+                  "description": "(Required) ID of the job."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1ca63d5-279b-4538-a870-46d5983550b6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job\": {\n    \"created_at\": \"1967-06-01T18:24:13.729Z\",\n    \"data_name\": \"string\",\n    \"id\": \"a1b2c3d4e5\",\n    \"status\": \"deleted\",\n    \"text_name\": \"string\",\n    \"duration\": 6438,\n    \"config\": {\n      \"type\": \"transcription\",\n      \"fetch_data\": {\n        \"url\": \"string\",\n        \"auth_headers\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"fetch_text\": {\n        \"url\": \"string\",\n        \"auth_headers\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"transcription_config\": {\n        \"language\": \"string\",\n        \"domain\": \"string\",\n        \"output_locale\": \"string\",\n        \"model\": \"standard\",\n        \"operating_point\": \"standard\",\n        \"additional_vocab\": [\n          {\n            \"content\": \"string\",\n            \"sounds_like\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"content\": \"string\",\n            \"sounds_like\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"punctuation_overrides\": {\n          \"sensitivity\": 0.17471911783849647,\n          \"permitted_marks\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"diarization\": \"none\",\n        \"channel_diarization_labels\": [\n          \"82FdM0Or\",\n          \"AXM4\"\n        ],\n        \"enable_entities\": true,\n        \"max_delay_mode\": \"flexible\",\n        \"audio_filtering_config\": {\n          \"volume_threshold\": 61.21353165071679\n        },\n        \"transcript_filtering_config\": {\n          \"remove_disfluencies\": true,\n          \"replacements\": [\n            {\n              \"from\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"to\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"from\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"to\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"speaker_diarization_config\": {\n          \"prefer_current_speaker\": true,\n          \"speaker_sensitivity\": 0.6148600970806903,\n          \"get_speakers\": true,\n          \"speakers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"notification_config\": [\n        {\n          \"url\": \"string\",\n          \"contents\": [\n            \"transcript.txt\",\n            \"jobinfo\"\n          ],\n          \"method\": \"post\",\n          \"auth_headers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"url\": \"string\",\n          \"contents\": [\n            \"data\",\n            \"jobinfo\"\n          ],\n          \"method\": \"post\",\n          \"auth_headers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"tracking\": {\n        \"title\": \"string\",\n        \"reference\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ],\n        \"details\": {\n          \"key_0\": \"string\",\n          \"key_1\": 7820.476643502286,\n          \"key_2\": 1764\n        }\n      },\n      \"output_config\": {\n        \"srt_overrides\": {\n          \"max_line_length\": 4265,\n          \"max_lines\": 5313\n        }\n      },\n      \"translation_config\": {\n        \"target_languages\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"language_identification_config\": {\n        \"expected_languages\": [\n          \"string\",\n          \"string\"\n        ],\n        \"low_confidence_action\": \"allow\",\n        \"default_language\": \"string\"\n      },\n      \"summarization_config\": {\n        \"content_type\": \"auto\",\n        \"summary_length\": \"brief\",\n        \"summary_type\": \"paragraphs\"\n      },\n      \"sentiment_analysis_config\": {},\n      \"topic_detection_config\": {\n        \"topics\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"auto_chapters_config\": {},\n      \"audio_events_config\": {\n        \"types\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    \"lang\": \"string\",\n    \"errors\": [\n      {\n        \"timestamp\": \"2021-07-14 11:53:49.242000+00:00\",\n        \"message\": \"Audio fetch error, http status 418\"\n      },\n      {\n        \"timestamp\": \"2021-07-14 11:53:49.242000+00:00\",\n        \"message\": \"Audio fetch error, http status 418\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2f680ef-8b9f-4f37-8148-d806facef98f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3959a3fd-3d2b-4560-ae8f-ba631c3ceada",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b05b9ee4-f614-4eaa-81c1-76a12bc9d998",
+              "name": "Gone (expired)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e52f885-af33-45fe-9024-48ed3f68c16d",
+              "name": "Rate Limited",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd15db1d-416b-4fbb-8840-3c1ddfc450c2",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3135e46d-c667-4640-bcf4-23fab6809929",
+          "name": "Delete a job",
+          "request": {
+            "name": "Delete a job",
+            "description": {},
+            "url": {
+              "path": [
+                "jobs",
+                ":jobid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<boolean>",
+                  "description": "Force terminate a running job."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobid",
+                  "description": "(Required) ID of the job to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c2ea291-a0fc-4945-b075-094d00a25004",
+              "name": "Job deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job\": {\n    \"created_at\": \"1980-12-31T08:16:54.967Z\",\n    \"data_name\": \"string\",\n    \"id\": \"a1b2c3d4e5\",\n    \"status\": \"expired\",\n    \"text_name\": \"string\",\n    \"duration\": 8157,\n    \"config\": {\n      \"type\": \"transcription\",\n      \"fetch_data\": {\n        \"url\": \"string\",\n        \"auth_headers\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"fetch_text\": {\n        \"url\": \"string\",\n        \"auth_headers\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"transcription_config\": {\n        \"language\": \"string\",\n        \"domain\": \"string\",\n        \"output_locale\": \"string\",\n        \"model\": \"enhanced\",\n        \"operating_point\": \"enhanced\",\n        \"additional_vocab\": [\n          {\n            \"content\": \"string\",\n            \"sounds_like\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"content\": \"string\",\n            \"sounds_like\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"punctuation_overrides\": {\n          \"sensitivity\": 0.1777353968741895,\n          \"permitted_marks\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"diarization\": \"channel\",\n        \"channel_diarization_labels\": [\n          \"D92uw\",\n          \"lmnclS\"\n        ],\n        \"enable_entities\": false,\n        \"max_delay_mode\": \"fixed\",\n        \"audio_filtering_config\": {\n          \"volume_threshold\": 74.89192722384708\n        },\n        \"transcript_filtering_config\": {\n          \"remove_disfluencies\": true,\n          \"replacements\": [\n            {\n              \"from\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"to\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"from\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"to\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"speaker_diarization_config\": {\n          \"prefer_current_speaker\": true,\n          \"speaker_sensitivity\": 0.27058232967419094,\n          \"get_speakers\": true,\n          \"speakers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"notification_config\": [\n        {\n          \"url\": \"string\",\n          \"contents\": [\n            \"jobinfo\",\n            \"text\"\n          ],\n          \"method\": \"post\",\n          \"auth_headers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"url\": \"string\",\n          \"contents\": [\n            \"transcript\",\n            \"jobinfo\"\n          ],\n          \"method\": \"put\",\n          \"auth_headers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"tracking\": {\n        \"title\": \"string\",\n        \"reference\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ],\n        \"details\": {\n          \"key_0\": 9694,\n          \"key_1\": \"string\"\n        }\n      },\n      \"output_config\": {\n        \"srt_overrides\": {\n          \"max_line_length\": 1296,\n          \"max_lines\": 4864\n        }\n      },\n      \"translation_config\": {\n        \"target_languages\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"language_identification_config\": {\n        \"expected_languages\": [\n          \"string\",\n          \"string\"\n        ],\n        \"low_confidence_action\": \"reject\",\n        \"default_language\": \"string\"\n      },\n      \"summarization_config\": {\n        \"content_type\": \"informative\",\n        \"summary_length\": \"brief\",\n        \"summary_type\": \"paragraphs\"\n      },\n      \"sentiment_analysis_config\": {},\n      \"topic_detection_config\": {\n        \"topics\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"auto_chapters_config\": {},\n      \"audio_events_config\": {\n        \"types\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    \"lang\": \"string\",\n    \"errors\": [\n      {\n        \"timestamp\": \"2021-07-14 11:53:49.242000+00:00\",\n        \"message\": \"Audio fetch error, http status 418\"\n      },\n      {\n        \"timestamp\": \"2021-07-14 11:53:49.242000+00:00\",\n        \"message\": \"Audio fetch error, http status 418\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb682fb0-f709-4c95-ad69-e770d5b9a02a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8f8bed3-b0a2-407a-8e26-98c8e0ddc805",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d70ba1c6-266b-447d-9e1c-516a783fb3bd",
+              "name": "Gone",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1159789-87b4-458e-82c5-b841c9973dc8",
+              "name": "Locked (running job, use force=true)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc7319a1-e238-4e77-8fe3-345fa986755b",
+              "name": "Rate Limited",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "513345ec-9e9b-47ed-8555-8335fbbf2420",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) ID of the job to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea02c628-8d48-4309-92de-8966f3d78316",
+          "name": "Get transcript for a job",
+          "request": {
+            "name": "Get transcript for a job",
+            "description": {},
+            "url": {
+              "path": [
+                "jobs",
+                ":jobid",
+                "transcript"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Transcription output format (default json-v2)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09fa4c86-b120-4eae-9837-ada819e33f78",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"format\": \"2.7\",\n  \"job\": {},\n  \"metadata\": {},\n  \"results\": [\n    {\n      \"start_time\": 2020.1601626445154,\n      \"end_time\": 1597.5458821015864,\n      \"type\": \"word\",\n      \"channel\": \"string\",\n      \"volume\": 78.14668111138371,\n      \"is_eos\": false,\n      \"alternatives\": [\n        {\n          \"content\": \"string\",\n          \"confidence\": 126.58938849390955,\n          \"language\": \"string\",\n          \"display\": {\n            \"direction\": \"rtl\"\n          },\n          \"speaker\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"content\": \"string\",\n          \"confidence\": 4931.705289047903,\n          \"language\": \"string\",\n          \"display\": {\n            \"direction\": \"rtl\"\n          },\n          \"speaker\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"attaches_to\": \"both\"\n    },\n    {\n      \"start_time\": 9623.66525849822,\n      \"end_time\": 728.1623819032834,\n      \"type\": \"word\",\n      \"channel\": \"string\",\n      \"volume\": 36.47165716728221,\n      \"is_eos\": true,\n      \"alternatives\": [\n        {\n          \"content\": \"string\",\n          \"confidence\": 8747.447069816486,\n          \"language\": \"string\",\n          \"display\": {\n            \"direction\": \"rtl\"\n          },\n          \"speaker\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"content\": \"string\",\n          \"confidence\": 1943.603752277312,\n          \"language\": \"string\",\n          \"display\": {\n            \"direction\": \"ltr\"\n          },\n          \"speaker\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"attaches_to\": \"none\"\n    }\n  ],\n  \"speakers\": [\n    {\n      \"label\": \"string\",\n      \"speaker_identifiers\": [\n        \"string\"\n      ]\n    },\n    {\n      \"label\": \"string\",\n      \"speaker_identifiers\": [\n        \"string\"\n      ]\n    }\n  ],\n  \"translations\": {\n    \"key_0\": [\n      {\n        \"start_time\": 5075.8416509169465,\n        \"end_time\": 8318.341218587386,\n        \"content\": \"string\",\n        \"speaker\": \"string\",\n        \"channel\": \"string\"\n      },\n      {\n        \"start_time\": 3244.2087500008497,\n        \"end_time\": 75.07691262705119,\n        \"content\": \"string\",\n        \"speaker\": \"string\",\n        \"channel\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"start_time\": 9830.671632616753,\n        \"end_time\": 8590.483133795387,\n        \"content\": \"string\",\n        \"speaker\": \"string\",\n        \"channel\": \"string\"\n      },\n      {\n        \"start_time\": 8627.077707536702,\n        \"end_time\": 6816.997772166256,\n        \"content\": \"string\",\n        \"speaker\": \"string\",\n        \"channel\": \"string\"\n      }\n    ]\n  },\n  \"summary\": {\n    \"content\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd3a1f00-45db-4c91-b898-29d60484523f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3cf45a3-2c6f-4511-a22c-0f6501749429",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "901e1c9b-4daf-46ee-ab90-1fa1270b6ce0",
+              "name": "Gone",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3efacf53-7f3b-4570-b079-3a4100b2ef37",
+              "name": "Rate Limited",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1930b559-9b8b-4c4e-8be5-8bbc25e403c4",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1da5881c-937a-4c4b-ae44-6f4f08f2e065",
+          "name": "Get log file for a job",
+          "request": {
+            "name": "Get log file for a job",
+            "description": {},
+            "url": {
+              "path": [
+                "jobs",
+                ":jobid",
+                "log"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84001435-9e8d-4c70-9fbe-35c0b3705885",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "57a4a81c-1d1f-42d2-918d-f14feb585790",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "348664c0-959b-484c-b25a-766103a3bd8c",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "238168e5-3a2c-455e-ac44-e77d572683e1",
+              "name": "Gone",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01ed538a-7e64-4cbd-8c49-ff4cd14a2407",
+              "name": "Rate Limited",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76a2330e-2f5c-43b4-b3cb-4a6fd545b184",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03c14f91-c2d5-42dc-bf74-6796383b570c",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobs",
+                    ":jobid",
+                    "log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9569,\n  \"error\": \"Bad Request\",\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://asr.api.speechmatics.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "10087fa4-0140-461e-9f82-b490c5d5689a",
+    "name": "Speechmatics Batch Transcription API Keys Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Speechmatics Automatic Speech Recognition REST API is used to submit ASR jobs and receive the results. The supported job type is transcription of audio files. Supports 55+ languages, speaker diarization, translation, summarization, sentiment analysis, topic detection, and custom vocabulary.\n\nContact Support:\n Email: support@speechmatics.com",
+      "type": "text/plain"
+    }
+  }
+}
