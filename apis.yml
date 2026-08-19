@@ -31,7 +31,7 @@ artifacts:
     url: vocabulary/speechmatics-vocabulary.yml
   - type: Examples
     url: examples/speechmatics-batch-transcription-job.json
-specificationVersion: "0.19"
+specificationVersion: '0.23'
 description: >
   Speechmatics is an enterprise-grade speech intelligence platform headquartered in
   Cambridge, UK, offering highly accurate speech-to-text APIs supporting 55+ languages
