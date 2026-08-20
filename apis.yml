@@ -82,6 +82,10 @@ apis:
   tags:
   - Management
   - REST
+  - APIKeys
+  tags_raw:
+  - Management
+  - REST
   - API Keys
   properties:
   - type: Documentation
@@ -107,6 +111,8 @@ apis:
   humanURL: https://docs.speechmatics.com/speech-to-text/batch
   baseURL: https://asr.api.speechmatics.com/v2
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
@@ -121,6 +127,8 @@ apis:
   humanURL: https://docs.speechmatics.com/speech-to-text/batch
   baseURL: https://asr.api.speechmatics.com/v2
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -135,6 +143,8 @@ apis:
   humanURL: https://docs.speechmatics.com/speech-to-text/batch
   baseURL: https://asr.api.speechmatics.com/v2
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
