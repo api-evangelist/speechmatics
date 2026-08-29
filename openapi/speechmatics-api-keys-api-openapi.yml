@@ -1,19 +1,15 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Speechmatics Batch Transcription API Keys API
-  version: 2.0.0
-  description: The Speechmatics Automatic Speech Recognition REST API is used to submit ASR jobs and receive the results. The supported job type is transcription of audio files. Supports 55+ languages, speaker diarization, translation, summarization, sentiment analysis, topic detection, and custom vocabulary.
+  title: Speechmatics Management API Keys API
+  version: 1.0.0
+  description: The Speechmatics Management API is used to manage projects and API keys programmatically. Supports creating, listing, updating, and deleting projects and API keys for Speechmatics services including batch, real-time, flow, and TTS.
   contact:
     email: support@speechmatics.com
   x-providerName: speechmatics
-  x-serviceName: batch-transcription-api
+  x-serviceName: management-api
 servers:
-- url: https://asr.api.speechmatics.com/v2
-  description: Speechmatics Batch ASR API (EU)
-- url: https://eu1.asr.api.speechmatics.com/v2
-  description: Speechmatics Batch ASR API (EU1)
-- url: https://usa.asr.api.speechmatics.com/v2
-  description: Speechmatics Batch ASR API (USA)
+- url: https://mp.speechmatics.com/v1
+  description: Speechmatics Management Platform API
 security:
 - bearerAuth: []
 tags:
@@ -157,17 +153,41 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    CreateApiKeysResponse:
+    CreateApiKeysRequest:
       type: object
-      required:
-      - key_value
-      - apikey_id
       properties:
-        key_value:
-          type: string
-          description: The API key value (only returned on creation).
-        apikey_id:
-          type: string
+        project_id:
+          type:
+          - integer
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 120
+        client_ref:
+          type:
+          - string
+          - 'null'
+        ttl:
+          type:
+          - integer
+          - 'null'
+          minimum: 60
+          maximum: 86400
+          description: Token time-to-live in seconds (60-86400).
+        region:
+          type:
+          - string
+          - 'null'
+          enum:
+          - eu
+          - usa
+          - au
+    ApiKeysResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/ApiKey'
     ErrorResponse:
       type: object
       required:
@@ -183,43 +203,6 @@ components:
         detail:
           type: string
           description: Additional error details.
-    CreateApiKeysRequest:
-      type: object
-      properties:
-        project_id:
-          type: integer
-          nullable: true
-        name:
-          type: string
-          nullable: true
-          maxLength: 120
-        client_ref:
-          type: string
-          nullable: true
-        ttl:
-          type: integer
-          nullable: true
-          minimum: 60
-          maximum: 86400
-          description: Token time-to-live in seconds (60-86400).
-        region:
-          type: string
-          nullable: true
-          enum:
-          - eu
-          - usa
-          - au
-    ApiKeysResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/ApiKey'
-    OkResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Status string.
-          example: OK
     ApiKey:
       type: object
       required:
@@ -234,6 +217,24 @@ components:
           format: date-time
         client_ref:
           type: string
+    CreateApiKeysResponse:
+      type: object
+      required:
+      - key_value
+      - apikey_id
+      properties:
+        key_value:
+          type: string
+          description: The API key value (only returned on creation).
+        apikey_id:
+          type: string
+    OkResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status string.
+          example: OK
   securitySchemes:
     bearerAuth:
       type: apiKey

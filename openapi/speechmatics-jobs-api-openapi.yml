@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Speechmatics Batch Transcription API Keys Jobs API
+  title: Speechmatics Batch Transcription Jobs API
   version: 2.0.0
   description: The Speechmatics Automatic Speech Recognition REST API is used to submit ASR jobs and receive the results. The supported job type is transcription of audio files. Supports 55+ languages, speaker diarization, translation, summarization, sentiment analysis, topic detection, and custom vocabulary.
   contact:
@@ -357,214 +357,17 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    JobDetails:
+    SentimentAnalysisConfig:
+      type: object
+    RetrieveJobsResponse:
       type: object
       required:
-      - created_at
-      - data_name
-      - id
-      - status
+      - jobs
       properties:
-        created_at:
-          type: string
-          format: date-time
-        data_name:
-          type: string
-        text_name:
-          type: string
-        duration:
-          type: integer
-          minimum: 0
-        id:
-          type: string
-          example: a1b2c3d4e5
-        status:
-          type: string
-          enum:
-          - running
-          - done
-          - rejected
-          - deleted
-          - expired
-        config:
-          $ref: '#/components/schemas/JobConfig'
-        lang:
-          type: string
-        errors:
+        jobs:
           type: array
           items:
-            $ref: '#/components/schemas/JobDetailError'
-    AutoChaptersConfig:
-      type: object
-    RecognitionDisplay:
-      type: object
-      required:
-      - direction
-      properties:
-        direction:
-          type: string
-          enum:
-          - ltr
-          - rtl
-    NotificationConfig:
-      type: object
-      required:
-      - url
-      properties:
-        url:
-          type: string
-          description: URL for job completion callback.
-        contents:
-          type: array
-          items:
-            type: string
-            enum:
-            - jobinfo
-            - transcript
-            - transcript.json-v2
-            - transcript.txt
-            - transcript.srt
-            - data
-            - text
-        method:
-          type: string
-          enum:
-          - post
-          - put
-        auth_headers:
-          type: array
-          items:
-            type: string
-    TrackingData:
-      type: object
-      properties:
-        title:
-          type: string
-          description: The title of the job.
-        reference:
-          type: string
-          description: External system reference.
-        tags:
-          type: array
-          items:
-            type: string
-        details:
-          type: object
-          description: Customer-defined JSON structure.
-          additionalProperties: true
-    ErrorResponse:
-      type: object
-      required:
-      - code
-      - error
-      properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-          minimum: 100
-        error:
-          type: string
-          description: The error message.
-          enum:
-          - Bad Request
-          - File Expired
-          - Forbidden
-          - Resource Locked
-          - Format Not Supported
-          - Internal Server Error
-          - Job error
-          - Job Expired
-          - Job In Progress
-          - Job is not of type transcription
-          - Job not found
-          - Job rejected
-          - Job rejected due to invalid audio
-          - Job rejected due to invalid text
-          - Malformed request
-          - Missing callback
-          - Missing data_file
-          - No language selected
-          - Not Implemented
-          - Permission Denied
-          - Requested product not available
-          - Transcription not ready
-          - Log file not available
-          - Unprocessable Entity
-          - Max concurrent running jobs exceeded
-        detail:
-          type: string
-          description: The details of the error.
-    DataFetchConfig:
-      type: object
-      required:
-      - url
-      properties:
-        url:
-          type: string
-        auth_headers:
-          type: array
-          items:
-            type: string
-          description: A list of additional headers to be added to the input fetch request.
-    TopicDetectionConfig:
-      type: object
-      properties:
-        topics:
-          type: array
-          items:
-            type: string
-    SpeakersInputItem:
-      type: object
-      required:
-      - label
-      - speaker_identifiers
-      properties:
-        label:
-          type: string
-          minLength: 1
-        speaker_identifiers:
-          type: array
-          minItems: 1
-          uniqueItems: true
-          items:
-            type: string
-    JobConfig:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - transcription
-        fetch_data:
-          $ref: '#/components/schemas/DataFetchConfig'
-        fetch_text:
-          $ref: '#/components/schemas/DataFetchConfig'
-        transcription_config:
-          $ref: '#/components/schemas/TranscriptionConfig'
-        notification_config:
-          type: array
-          items:
-            $ref: '#/components/schemas/NotificationConfig'
-        tracking:
-          $ref: '#/components/schemas/TrackingData'
-        output_config:
-          $ref: '#/components/schemas/OutputConfig'
-        translation_config:
-          $ref: '#/components/schemas/TranslationConfig'
-        language_identification_config:
-          $ref: '#/components/schemas/LanguageIdentificationConfig'
-        summarization_config:
-          $ref: '#/components/schemas/SummarizationConfig'
-        sentiment_analysis_config:
-          $ref: '#/components/schemas/SentimentAnalysisConfig'
-        topic_detection_config:
-          $ref: '#/components/schemas/TopicDetectionConfig'
-        auto_chapters_config:
-          $ref: '#/components/schemas/AutoChaptersConfig'
-        audio_events_config:
-          $ref: '#/components/schemas/AudioEventsConfig'
+            $ref: '#/components/schemas/JobDetails'
     TranscriptionConfig:
       type: object
       required:
@@ -675,18 +478,16 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/SpeakersInputItem'
-    JobDetailError:
+    OutputConfig:
       type: object
-      required:
-      - timestamp
-      - message
       properties:
-        timestamp:
-          type: string
-          example: 2021-07-14 11:53:49.242000+00:00
-        message:
-          type: string
-          example: Audio fetch error, http status 418
+        srt_overrides:
+          type: object
+          properties:
+            max_line_length:
+              type: integer
+            max_lines:
+              type: integer
     RecognitionAlternative:
       type: object
       required:
@@ -709,6 +510,20 @@ components:
           type: array
           items:
             type: string
+    OperatingPoint:
+      type: string
+      description: Deprecated. Use model instead.
+      enum:
+      - standard
+      - enhanced
+      deprecated: true
+    AudioEventsConfig:
+      type: object
+      properties:
+        types:
+          type: array
+          items:
+            type: string
     TranslationConfig:
       type: object
       required:
@@ -719,37 +534,66 @@ components:
           maxItems: 5
           items:
             type: string
-    RetrieveTranscriptResponse:
+    AutoChaptersConfig:
+      type: object
+    SpeakersInputItem:
       type: object
       required:
-      - format
-      - job
-      - metadata
-      - results
+      - label
+      - speaker_identifiers
       properties:
-        format:
+        label:
           type: string
-          example: '2.7'
-        job:
-          type: object
-        metadata:
-          type: object
-        results:
+          minLength: 1
+        speaker_identifiers:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            type: string
+    DataFetchConfig:
+      type: object
+      required:
+      - url
+      properties:
+        url:
+          type: string
+        auth_headers:
           type: array
           items:
-            $ref: '#/components/schemas/RecognitionResult'
-        speakers:
-          type: array
-          items:
-            $ref: '#/components/schemas/SpeakersResultItem'
-        translations:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/TranslationSentence'
-        summary:
-          $ref: '#/components/schemas/SummarizationResult'
+            type: string
+          description: A list of additional headers to be added to the input fetch request.
+    Model:
+      type: string
+      description: Specific model to use in transcription.
+      enum:
+      - standard
+      - enhanced
+    SummarizationConfig:
+      type: object
+      properties:
+        content_type:
+          type: string
+          enum:
+          - auto
+          - informative
+          - conversational
+        summary_length:
+          type: string
+          enum:
+          - brief
+          - detailed
+          default: brief
+        summary_type:
+          type: string
+          enum:
+          - paragraphs
+          - bullets
+    SummarizationResult:
+      type: object
+      properties:
+        content:
+          type: string
     RecognitionResult:
       type: object
       required:
@@ -789,26 +633,133 @@ components:
           - next
           - both
           - none
-    SummarizationConfig:
+    RetrieveTranscriptResponse:
+      type: object
+      required:
+      - format
+      - job
+      - metadata
+      - results
+      properties:
+        format:
+          type: string
+          example: '2.7'
+        job:
+          type: object
+        metadata:
+          type: object
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecognitionResult'
+        speakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpeakersResultItem'
+        translations:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/TranslationSentence'
+        summary:
+          $ref: '#/components/schemas/SummarizationResult'
+    CreateJobResponse:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: The unique ID assigned to the job.
+          example: a1b2c3d4e5
+    JobConfig:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - transcription
+        fetch_data:
+          $ref: '#/components/schemas/DataFetchConfig'
+        fetch_text:
+          $ref: '#/components/schemas/DataFetchConfig'
+        transcription_config:
+          $ref: '#/components/schemas/TranscriptionConfig'
+        notification_config:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationConfig'
+        tracking:
+          $ref: '#/components/schemas/TrackingData'
+        output_config:
+          $ref: '#/components/schemas/OutputConfig'
+        translation_config:
+          $ref: '#/components/schemas/TranslationConfig'
+        language_identification_config:
+          $ref: '#/components/schemas/LanguageIdentificationConfig'
+        summarization_config:
+          $ref: '#/components/schemas/SummarizationConfig'
+        sentiment_analysis_config:
+          $ref: '#/components/schemas/SentimentAnalysisConfig'
+        topic_detection_config:
+          $ref: '#/components/schemas/TopicDetectionConfig'
+        auto_chapters_config:
+          $ref: '#/components/schemas/AutoChaptersConfig'
+        audio_events_config:
+          $ref: '#/components/schemas/AudioEventsConfig'
+    RetrieveJobResponse:
+      type: object
+      required:
+      - job
+      properties:
+        job:
+          $ref: '#/components/schemas/JobDetails'
+    TrackingData:
       type: object
       properties:
-        content_type:
+        title:
           type: string
-          enum:
-          - auto
-          - informative
-          - conversational
-        summary_length:
+          description: The title of the job.
+        reference:
           type: string
-          enum:
-          - brief
-          - detailed
-          default: brief
-        summary_type:
+          description: External system reference.
+        tags:
+          type: array
+          items:
+            type: string
+        details:
+          type: object
+          description: Customer-defined JSON structure.
+          additionalProperties: true
+    DeleteJobResponse:
+      type: object
+      required:
+      - job
+      properties:
+        job:
+          $ref: '#/components/schemas/JobDetails'
+    JobDetailError:
+      type: object
+      required:
+      - timestamp
+      - message
+      properties:
+        timestamp:
           type: string
-          enum:
-          - paragraphs
-          - bullets
+          example: 2021-07-14 11:53:49.242000+00:00
+        message:
+          type: string
+          example: Audio fetch error, http status 418
+    TopicDetectionConfig:
+      type: object
+      properties:
+        topics:
+          type: array
+          items:
+            type: string
     SpeakersResultItem:
       type: object
       required:
@@ -824,38 +775,114 @@ components:
           uniqueItems: true
           items:
             type: string
-    OutputConfig:
-      type: object
-      properties:
-        srt_overrides:
-          type: object
-          properties:
-            max_line_length:
-              type: integer
-            max_lines:
-              type: integer
-    CreateJobResponse:
+    JobDetails:
       type: object
       required:
+      - created_at
+      - data_name
       - id
+      - status
       properties:
+        created_at:
+          type: string
+          format: date-time
+        data_name:
+          type: string
+        text_name:
+          type: string
+        duration:
+          type: integer
+          minimum: 0
         id:
           type: string
-          description: The unique ID assigned to the job.
           example: a1b2c3d4e5
-    Model:
-      type: string
-      description: Specific model to use in transcription.
-      enum:
-      - standard
-      - enhanced
-    AudioEventsConfig:
+        status:
+          type: string
+          enum:
+          - running
+          - done
+          - rejected
+          - deleted
+          - expired
+        config:
+          $ref: '#/components/schemas/JobConfig'
+        lang:
+          type: string
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobDetailError'
+    NotificationConfig:
       type: object
+      required:
+      - url
       properties:
-        types:
+        url:
+          type: string
+          description: URL for job completion callback.
+        contents:
           type: array
           items:
             type: string
+            enum:
+            - jobinfo
+            - transcript
+            - transcript.json-v2
+            - transcript.txt
+            - transcript.srt
+            - data
+            - text
+        method:
+          type: string
+          enum:
+          - post
+          - put
+        auth_headers:
+          type: array
+          items:
+            type: string
+    ErrorResponse:
+      type: object
+      required:
+      - code
+      - error
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+          minimum: 100
+        error:
+          type: string
+          description: The error message.
+          enum:
+          - Bad Request
+          - File Expired
+          - Forbidden
+          - Resource Locked
+          - Format Not Supported
+          - Internal Server Error
+          - Job error
+          - Job Expired
+          - Job In Progress
+          - Job is not of type transcription
+          - Job not found
+          - Job rejected
+          - Job rejected due to invalid audio
+          - Job rejected due to invalid text
+          - Malformed request
+          - Missing callback
+          - Missing data_file
+          - No language selected
+          - Not Implemented
+          - Permission Denied
+          - Requested product not available
+          - Transcription not ready
+          - Log file not available
+          - Unprocessable Entity
+          - Max concurrent running jobs exceeded
+        detail:
+          type: string
+          description: The details of the error.
     LanguageIdentificationConfig:
       type: object
       properties:
@@ -871,27 +898,6 @@ components:
           - use_default_language
         default_language:
           type: string
-    SummarizationResult:
-      type: object
-      properties:
-        content:
-          type: string
-    RetrieveJobResponse:
-      type: object
-      required:
-      - job
-      properties:
-        job:
-          $ref: '#/components/schemas/JobDetails'
-    DeleteJobResponse:
-      type: object
-      required:
-      - job
-      properties:
-        job:
-          $ref: '#/components/schemas/JobDetails'
-    SentimentAnalysisConfig:
-      type: object
     TranslationSentence:
       type: object
       properties:
@@ -907,22 +913,16 @@ components:
           type: string
         channel:
           type: string
-    RetrieveJobsResponse:
+    RecognitionDisplay:
       type: object
       required:
-      - jobs
+      - direction
       properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobDetails'
-    OperatingPoint:
-      type: string
-      description: Deprecated. Use model instead.
-      enum:
-      - standard
-      - enhanced
-      deprecated: true
+        direction:
+          type: string
+          enum:
+          - ltr
+          - rtl
   securitySchemes:
     bearerAuth:
       type: apiKey

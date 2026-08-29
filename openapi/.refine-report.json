@@ -1,20 +1,31 @@
 {
   "provider": "speechmatics",
   "sources": [
-    "speechmatics-api-keys-api-openapi.yml",
-    "speechmatics-jobs-api-openapi.yml",
-    "speechmatics-projects-api-openapi.yml",
-    "speechmatics-usage-api-openapi.yml"
+    "_original/speechmatics-batch-transcription-api-openapi.yml",
+    "_original/speechmatics-management-api-openapi.yml"
   ],
   "outputs": [
-    "speechmatics-api-keys-api-openapi.yml",
     "speechmatics-jobs-api-openapi.yml",
-    "speechmatics-projects-api-openapi.yml",
-    "speechmatics-usage-api-openapi.yml"
+    "speechmatics-usage-api-openapi.yml",
+    "speechmatics-api-keys-api-openapi.yml",
+    "speechmatics-projects-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "speechmatics-batch-transcription-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "speechmatics-batch-transcription-api-openapi.yml: declared missing tag: Jobs",
+    "speechmatics-batch-transcription-api-openapi.yml: declared missing tag: Usage",
+    "speechmatics-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "speechmatics-management-api-openapi.yml: declared missing tag: API Keys",
+    "speechmatics-management-api-openapi.yml: declared missing tag: Projects"
+  ],
+  "skipped": [
+    "speechmatics-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "speechmatics-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "speechmatics-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "speechmatics-usage-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

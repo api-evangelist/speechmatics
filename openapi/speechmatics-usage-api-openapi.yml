@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Speechmatics Batch Transcription API Keys Usage API
+  title: Speechmatics Batch Transcription Usage API
   version: 2.0.0
   description: The Speechmatics Automatic Speech Recognition REST API is used to submit ASR jobs and receive the results. The supported job type is transcription of audio files. Supports 55+ languages, speaker diarization, translation, summarization, sentiment analysis, topic detection, and custom vocabulary.
   contact:
@@ -69,28 +69,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    UsageResponse:
-      type: object
-      required:
-      - since
-      - until
-      - summary
-      - details
-      properties:
-        since:
-          type: string
-          format: date-time
-        until:
-          type: string
-          format: date-time
-        summary:
-          type: array
-          items:
-            $ref: '#/components/schemas/UsageDetails'
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/UsageDetails'
     UsageDetails:
       type: object
       required:
@@ -157,6 +135,28 @@ components:
         detail:
           type: string
           description: The details of the error.
+    UsageResponse:
+      type: object
+      required:
+      - since
+      - until
+      - summary
+      - details
+      properties:
+        since:
+          type: string
+          format: date-time
+        until:
+          type: string
+          format: date-time
+        summary:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageDetails'
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageDetails'
   securitySchemes:
     bearerAuth:
       type: apiKey

@@ -1,19 +1,15 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Speechmatics Batch Transcription API Keys Projects API
-  version: 2.0.0
-  description: The Speechmatics Automatic Speech Recognition REST API is used to submit ASR jobs and receive the results. The supported job type is transcription of audio files. Supports 55+ languages, speaker diarization, translation, summarization, sentiment analysis, topic detection, and custom vocabulary.
+  title: Speechmatics Management Projects API
+  version: 1.0.0
+  description: The Speechmatics Management API is used to manage projects and API keys programmatically. Supports creating, listing, updating, and deleting projects and API keys for Speechmatics services including batch, real-time, flow, and TTS.
   contact:
     email: support@speechmatics.com
   x-providerName: speechmatics
-  x-serviceName: batch-transcription-api
+  x-serviceName: management-api
 servers:
-- url: https://asr.api.speechmatics.com/v2
-  description: Speechmatics Batch ASR API (EU)
-- url: https://eu1.asr.api.speechmatics.com/v2
-  description: Speechmatics Batch ASR API (EU1)
-- url: https://usa.asr.api.speechmatics.com/v2
-  description: Speechmatics Batch ASR API (USA)
+- url: https://mp.speechmatics.com/v1
+  description: Speechmatics Management Platform API
 security:
 - bearerAuth: []
 tags:
@@ -184,20 +180,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    CreateProjectRequest:
+    UpdateProjectRequest:
       type: object
       required:
       - name
       properties:
-        contract_id:
-          type: integer
-          description: Optional contract ID for the project.
         name:
           type: string
-          description: The name of the project.
-        description:
-          type: string
-          description: A description of the project and its intended use.
+          description: The new name for the project.
     Project:
       type: object
       required:
@@ -206,11 +196,13 @@ components:
         project_id:
           type: integer
         is_default:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         is_active:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         name:
           type: string
         description:
@@ -240,14 +232,20 @@ components:
         detail:
           type: string
           description: Additional error details.
-    UpdateProjectRequest:
+    CreateProjectRequest:
       type: object
       required:
       - name
       properties:
+        contract_id:
+          type: integer
+          description: Optional contract ID for the project.
         name:
           type: string
-          description: The new name for the project.
+          description: The name of the project.
+        description:
+          type: string
+          description: A description of the project and its intended use.
   securitySchemes:
     bearerAuth:
       type: apiKey
