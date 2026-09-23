@@ -180,14 +180,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    UpdateProjectRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: The new name for the project.
     Project:
       type: object
       required:
@@ -213,10 +205,6 @@ components:
         deleted_at:
           type: string
           format: date-time
-    ProjectsResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Project'
     ErrorResponse:
       type: object
       required:
@@ -232,6 +220,18 @@ components:
         detail:
           type: string
           description: Additional error details.
+    UpdateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The new name for the project.
+    ProjectsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Project'
     CreateProjectRequest:
       type: object
       required:

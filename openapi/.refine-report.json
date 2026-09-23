@@ -20,7 +20,8 @@
     "speechmatics-batch-transcription-api-openapi.yml: declared missing tag: Usage",
     "speechmatics-management-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "speechmatics-management-api-openapi.yml: declared missing tag: API Keys",
-    "speechmatics-management-api-openapi.yml: declared missing tag: Projects"
+    "speechmatics-management-api-openapi.yml: declared missing tag: Projects",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "speechmatics-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",

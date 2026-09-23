@@ -153,6 +153,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ApiKeysResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/ApiKey'
     CreateApiKeysRequest:
       type: object
       properties:
@@ -184,10 +188,6 @@ components:
           - eu
           - usa
           - au
-    ApiKeysResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/ApiKey'
     ErrorResponse:
       type: object
       required:
@@ -217,6 +217,13 @@ components:
           format: date-time
         client_ref:
           type: string
+    OkResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status string.
+          example: OK
     CreateApiKeysResponse:
       type: object
       required:
@@ -228,13 +235,6 @@ components:
           description: The API key value (only returned on creation).
         apikey_id:
           type: string
-    OkResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Status string.
-          example: OK
   securitySchemes:
     bearerAuth:
       type: apiKey
