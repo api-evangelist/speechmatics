@@ -68,6 +68,7 @@ tags:
   - Audio Processing
   - WebSocket
   - REST
+  - Voice
 apis:
 - aid: speechmatics:realtime-transcription-api
   name: Speechmatics Realtime Transcription API

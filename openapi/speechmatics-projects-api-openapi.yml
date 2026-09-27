@@ -180,6 +180,33 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - code
+      - error
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        error:
+          type: string
+          description: The error message.
+        detail:
+          type: string
+          description: Additional error details.
+    ProjectsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Project'
+    UpdateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The new name for the project.
     Project:
       type: object
       required:
@@ -205,33 +232,6 @@ components:
         deleted_at:
           type: string
           format: date-time
-    ErrorResponse:
-      type: object
-      required:
-      - code
-      - error
-      properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-        error:
-          type: string
-          description: The error message.
-        detail:
-          type: string
-          description: Additional error details.
-    UpdateProjectRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: The new name for the project.
-    ProjectsResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Project'
     CreateProjectRequest:
       type: object
       required:

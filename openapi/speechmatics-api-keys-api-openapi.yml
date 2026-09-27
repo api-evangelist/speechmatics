@@ -153,10 +153,46 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      required:
+      - code
+      - error
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        error:
+          type: string
+          description: The error message.
+        detail:
+          type: string
+          description: Additional error details.
     ApiKeysResponse:
       type: array
       items:
         $ref: '#/components/schemas/ApiKey'
+    ApiKey:
+      type: object
+      required:
+      - apikey_id
+      properties:
+        apikey_id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        client_ref:
+          type: string
+    OkResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status string.
+          example: OK
     CreateApiKeysRequest:
       type: object
       properties:
@@ -188,42 +224,6 @@ components:
           - eu
           - usa
           - au
-    ErrorResponse:
-      type: object
-      required:
-      - code
-      - error
-      properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-        error:
-          type: string
-          description: The error message.
-        detail:
-          type: string
-          description: Additional error details.
-    ApiKey:
-      type: object
-      required:
-      - apikey_id
-      properties:
-        apikey_id:
-          type: string
-        name:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        client_ref:
-          type: string
-    OkResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Status string.
-          example: OK
     CreateApiKeysResponse:
       type: object
       required:

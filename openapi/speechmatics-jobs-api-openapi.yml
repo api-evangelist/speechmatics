@@ -357,39 +357,141 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    AudioEventsConfig:
-      type: object
-      properties:
-        types:
-          type: array
-          items:
-            type: string
-    TranslationConfig:
+    OperatingPoint:
+      type: string
+      description: Deprecated. Use model instead.
+      enum:
+      - standard
+      - enhanced
+      deprecated: true
+    SpeakersInputItem:
       type: object
       required:
-      - target_languages
+      - label
+      - speaker_identifiers
       properties:
-        target_languages:
+        label:
+          type: string
+          minLength: 1
+        speaker_identifiers:
           type: array
-          maxItems: 5
+          minItems: 1
+          uniqueItems: true
           items:
             type: string
+    JobDetailError:
+      type: object
+      required:
+      - timestamp
+      - message
+      properties:
+        timestamp:
+          type: string
+          example: 2021-07-14 11:53:49.242000+00:00
+        message:
+          type: string
+          example: Audio fetch error, http status 418
     AutoChaptersConfig:
       type: object
-    TranslationSentence:
+    CreateJobResponse:
       type: object
+      required:
+      - id
       properties:
-        start_time:
-          type: number
-          format: float
-        end_time:
-          type: number
-          format: float
+        id:
+          type: string
+          description: The unique ID assigned to the job.
+          example: a1b2c3d4e5
+    RetrieveTranscriptResponse:
+      type: object
+      required:
+      - format
+      - job
+      - metadata
+      - results
+      properties:
+        format:
+          type: string
+          example: '2.7'
+        job:
+          type: object
+        metadata:
+          type: object
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecognitionResult'
+        speakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpeakersResultItem'
+        translations:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/TranslationSentence'
+        summary:
+          $ref: '#/components/schemas/SummarizationResult'
+    RetrieveJobsResponse:
+      type: object
+      required:
+      - jobs
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobDetails'
+    RecognitionAlternative:
+      type: object
+      required:
+      - content
+      - confidence
+      - language
+      properties:
         content:
           type: string
+        confidence:
+          type: number
+          format: float
+        language:
+          type: string
+        display:
+          $ref: '#/components/schemas/RecognitionDisplay'
         speaker:
           type: string
-        channel:
+        tags:
+          type: array
+          items:
+            type: string
+    TrackingData:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the job.
+        reference:
+          type: string
+          description: External system reference.
+        tags:
+          type: array
+          items:
+            type: string
+        details:
+          type: object
+          description: Customer-defined JSON structure.
+          additionalProperties: true
+    DeleteJobResponse:
+      type: object
+      required:
+      - job
+      properties:
+        job:
+          $ref: '#/components/schemas/JobDetails'
+    SummarizationResult:
+      type: object
+      properties:
+        content:
           type: string
     TranscriptionConfig:
       type: object
@@ -501,21 +603,97 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/SpeakersInputItem'
-    LanguageIdentificationConfig:
+    OutputConfig:
       type: object
       properties:
-        expected_languages:
+        srt_overrides:
+          type: object
+          properties:
+            max_line_length:
+              type: integer
+            max_lines:
+              type: integer
+    RecognitionResult:
+      type: object
+      required:
+      - start_time
+      - end_time
+      - type
+      properties:
+        channel:
+          type: string
+        start_time:
+          type: number
+          format: float
+        end_time:
+          type: number
+          format: float
+        volume:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+        is_eos:
+          type: boolean
+        type:
+          type: string
+          enum:
+          - word
+          - punctuation
+          - entity
+        alternatives:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecognitionAlternative'
+        attaches_to:
+          type: string
+          enum:
+          - previous
+          - next
+          - both
+          - none
+    AudioEventsConfig:
+      type: object
+      properties:
+        types:
           type: array
           items:
             type: string
-        low_confidence_action:
+    TopicDetectionConfig:
+      type: object
+      properties:
+        topics:
+          type: array
+          items:
+            type: string
+    TranslationSentence:
+      type: object
+      properties:
+        start_time:
+          type: number
+          format: float
+        end_time:
+          type: number
+          format: float
+        content:
           type: string
-          enum:
-          - allow
-          - reject
-          - use_default_language
-        default_language:
+        speaker:
           type: string
+        channel:
+          type: string
+    RetrieveJobResponse:
+      type: object
+      required:
+      - job
+      properties:
+        job:
+          $ref: '#/components/schemas/JobDetails'
+    Model:
+      type: string
+      description: Specific model to use in transcription.
+      enum:
+      - standard
+      - enhanced
     DataFetchConfig:
       type: object
       required:
@@ -528,21 +706,6 @@ components:
           items:
             type: string
           description: A list of additional headers to be added to the input fetch request.
-    SpeakersInputItem:
-      type: object
-      required:
-      - label
-      - speaker_identifiers
-      properties:
-        label:
-          type: string
-          minLength: 1
-        speaker_identifiers:
-          type: array
-          minItems: 1
-          uniqueItems: true
-          items:
-            type: string
     JobDetails:
       type: object
       required:
@@ -580,32 +743,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/JobDetailError'
-    SummarizationResult:
-      type: object
-      properties:
-        content:
-          type: string
-    JobDetailError:
+    SpeakersResultItem:
       type: object
       required:
-      - timestamp
-      - message
+      - label
+      - speaker_identifiers
       properties:
-        timestamp:
+        label:
           type: string
-          example: 2021-07-14 11:53:49.242000+00:00
-        message:
-          type: string
-          example: Audio fetch error, http status 418
-    RetrieveJobsResponse:
-      type: object
-      required:
-      - jobs
-      properties:
-        jobs:
+          minLength: 1
+        speaker_identifiers:
           type: array
+          minItems: 1
+          uniqueItems: true
           items:
-            $ref: '#/components/schemas/JobDetails'
+            type: string
     NotificationConfig:
       type: object
       required:
@@ -635,6 +787,63 @@ components:
           type: array
           items:
             type: string
+    SummarizationConfig:
+      type: object
+      properties:
+        content_type:
+          type: string
+          enum:
+          - auto
+          - informative
+          - conversational
+        summary_length:
+          type: string
+          enum:
+          - brief
+          - detailed
+          default: brief
+        summary_type:
+          type: string
+          enum:
+          - paragraphs
+          - bullets
+    JobConfig:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - transcription
+        fetch_data:
+          $ref: '#/components/schemas/DataFetchConfig'
+        fetch_text:
+          $ref: '#/components/schemas/DataFetchConfig'
+        transcription_config:
+          $ref: '#/components/schemas/TranscriptionConfig'
+        notification_config:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationConfig'
+        tracking:
+          $ref: '#/components/schemas/TrackingData'
+        output_config:
+          $ref: '#/components/schemas/OutputConfig'
+        translation_config:
+          $ref: '#/components/schemas/TranslationConfig'
+        language_identification_config:
+          $ref: '#/components/schemas/LanguageIdentificationConfig'
+        summarization_config:
+          $ref: '#/components/schemas/SummarizationConfig'
+        sentiment_analysis_config:
+          $ref: '#/components/schemas/SentimentAnalysisConfig'
+        topic_detection_config:
+          $ref: '#/components/schemas/TopicDetectionConfig'
+        auto_chapters_config:
+          $ref: '#/components/schemas/AutoChaptersConfig'
+        audio_events_config:
+          $ref: '#/components/schemas/AudioEventsConfig'
     ErrorResponse:
       type: object
       required:
@@ -677,222 +886,23 @@ components:
         detail:
           type: string
           description: The details of the error.
-    JobConfig:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - transcription
-        fetch_data:
-          $ref: '#/components/schemas/DataFetchConfig'
-        fetch_text:
-          $ref: '#/components/schemas/DataFetchConfig'
-        transcription_config:
-          $ref: '#/components/schemas/TranscriptionConfig'
-        notification_config:
-          type: array
-          items:
-            $ref: '#/components/schemas/NotificationConfig'
-        tracking:
-          $ref: '#/components/schemas/TrackingData'
-        output_config:
-          $ref: '#/components/schemas/OutputConfig'
-        translation_config:
-          $ref: '#/components/schemas/TranslationConfig'
-        language_identification_config:
-          $ref: '#/components/schemas/LanguageIdentificationConfig'
-        summarization_config:
-          $ref: '#/components/schemas/SummarizationConfig'
-        sentiment_analysis_config:
-          $ref: '#/components/schemas/SentimentAnalysisConfig'
-        topic_detection_config:
-          $ref: '#/components/schemas/TopicDetectionConfig'
-        auto_chapters_config:
-          $ref: '#/components/schemas/AutoChaptersConfig'
-        audio_events_config:
-          $ref: '#/components/schemas/AudioEventsConfig'
-    OperatingPoint:
-      type: string
-      description: Deprecated. Use model instead.
-      enum:
-      - standard
-      - enhanced
-      deprecated: true
-    TopicDetectionConfig:
-      type: object
-      properties:
-        topics:
-          type: array
-          items:
-            type: string
     SentimentAnalysisConfig:
       type: object
-    RetrieveJobResponse:
+    LanguageIdentificationConfig:
       type: object
-      required:
-      - job
       properties:
-        job:
-          $ref: '#/components/schemas/JobDetails'
-    CreateJobResponse:
-      type: object
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: The unique ID assigned to the job.
-          example: a1b2c3d4e5
-    SpeakersResultItem:
-      type: object
-      required:
-      - label
-      - speaker_identifiers
-      properties:
-        label:
-          type: string
-          minLength: 1
-        speaker_identifiers:
-          type: array
-          minItems: 1
-          uniqueItems: true
-          items:
-            type: string
-    RecognitionAlternative:
-      type: object
-      required:
-      - content
-      - confidence
-      - language
-      properties:
-        content:
-          type: string
-        confidence:
-          type: number
-          format: float
-        language:
-          type: string
-        display:
-          $ref: '#/components/schemas/RecognitionDisplay'
-        speaker:
-          type: string
-        tags:
+        expected_languages:
           type: array
           items:
             type: string
-    RecognitionResult:
-      type: object
-      required:
-      - start_time
-      - end_time
-      - type
-      properties:
-        channel:
-          type: string
-        start_time:
-          type: number
-          format: float
-        end_time:
-          type: number
-          format: float
-        volume:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 100
-        is_eos:
-          type: boolean
-        type:
+        low_confidence_action:
           type: string
           enum:
-          - word
-          - punctuation
-          - entity
-        alternatives:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecognitionAlternative'
-        attaches_to:
+          - allow
+          - reject
+          - use_default_language
+        default_language:
           type: string
-          enum:
-          - previous
-          - next
-          - both
-          - none
-    TrackingData:
-      type: object
-      properties:
-        title:
-          type: string
-          description: The title of the job.
-        reference:
-          type: string
-          description: External system reference.
-        tags:
-          type: array
-          items:
-            type: string
-        details:
-          type: object
-          description: Customer-defined JSON structure.
-          additionalProperties: true
-    RetrieveTranscriptResponse:
-      type: object
-      required:
-      - format
-      - job
-      - metadata
-      - results
-      properties:
-        format:
-          type: string
-          example: '2.7'
-        job:
-          type: object
-        metadata:
-          type: object
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecognitionResult'
-        speakers:
-          type: array
-          items:
-            $ref: '#/components/schemas/SpeakersResultItem'
-        translations:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/TranslationSentence'
-        summary:
-          $ref: '#/components/schemas/SummarizationResult'
-    OutputConfig:
-      type: object
-      properties:
-        srt_overrides:
-          type: object
-          properties:
-            max_line_length:
-              type: integer
-            max_lines:
-              type: integer
-    Model:
-      type: string
-      description: Specific model to use in transcription.
-      enum:
-      - standard
-      - enhanced
-    DeleteJobResponse:
-      type: object
-      required:
-      - job
-      properties:
-        job:
-          $ref: '#/components/schemas/JobDetails'
     RecognitionDisplay:
       type: object
       required:
@@ -903,26 +913,16 @@ components:
           enum:
           - ltr
           - rtl
-    SummarizationConfig:
+    TranslationConfig:
       type: object
+      required:
+      - target_languages
       properties:
-        content_type:
-          type: string
-          enum:
-          - auto
-          - informative
-          - conversational
-        summary_length:
-          type: string
-          enum:
-          - brief
-          - detailed
-          default: brief
-        summary_type:
-          type: string
-          enum:
-          - paragraphs
-          - bullets
+        target_languages:
+          type: array
+          maxItems: 5
+          items:
+            type: string
   securitySchemes:
     bearerAuth:
       type: apiKey
