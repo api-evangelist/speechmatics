@@ -91,30 +91,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UsageDetails'
-    UsageDetails:
-      type: object
-      required:
-      - mode
-      - type
-      - count
-      - duration_hrs
-      properties:
-        mode:
-          type: string
-          enum:
-          - batch
-        type:
-          type: string
-          enum:
-          - transcription
-        language:
-          type: string
-          example: en
-        count:
-          type: integer
-        duration_hrs:
-          type: number
-          format: float
     ErrorResponse:
       type: object
       required:
@@ -157,6 +133,30 @@ components:
         detail:
           type: string
           description: The details of the error.
+    UsageDetails:
+      type: object
+      required:
+      - mode
+      - type
+      - count
+      - duration_hrs
+      properties:
+        mode:
+          type: string
+          enum:
+          - batch
+        type:
+          type: string
+          enum:
+          - transcription
+        language:
+          type: string
+          example: en
+        count:
+          type: integer
+        duration_hrs:
+          type: number
+          format: float
   securitySchemes:
     bearerAuth:
       type: apiKey

@@ -180,6 +180,32 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    UpdateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The new name for the project.
+    CreateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        contract_id:
+          type: integer
+          description: Optional contract ID for the project.
+        name:
+          type: string
+          description: The name of the project.
+        description:
+          type: string
+          description: A description of the project and its intended use.
+    ProjectsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Project'
     ErrorResponse:
       type: object
       required:
@@ -195,18 +221,6 @@ components:
         detail:
           type: string
           description: Additional error details.
-    ProjectsResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Project'
-    UpdateProjectRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: The new name for the project.
     Project:
       type: object
       required:
@@ -232,20 +246,6 @@ components:
         deleted_at:
           type: string
           format: date-time
-    CreateProjectRequest:
-      type: object
-      required:
-      - name
-      properties:
-        contract_id:
-          type: integer
-          description: Optional contract ID for the project.
-        name:
-          type: string
-          description: The name of the project.
-        description:
-          type: string
-          description: A description of the project and its intended use.
   securitySchemes:
     bearerAuth:
       type: apiKey

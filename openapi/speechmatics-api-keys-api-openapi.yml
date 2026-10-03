@@ -153,25 +153,17 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
+    CreateApiKeysResponse:
       type: object
       required:
-      - code
-      - error
+      - key_value
+      - apikey_id
       properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-        error:
+        key_value:
           type: string
-          description: The error message.
-        detail:
+          description: The API key value (only returned on creation).
+        apikey_id:
           type: string
-          description: Additional error details.
-    ApiKeysResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/ApiKey'
     ApiKey:
       type: object
       required:
@@ -186,13 +178,10 @@ components:
           format: date-time
         client_ref:
           type: string
-    OkResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Status string.
-          example: OK
+    ApiKeysResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/ApiKey'
     CreateApiKeysRequest:
       type: object
       properties:
@@ -224,17 +213,28 @@ components:
           - eu
           - usa
           - au
-    CreateApiKeysResponse:
+    ErrorResponse:
       type: object
       required:
-      - key_value
-      - apikey_id
+      - code
+      - error
       properties:
-        key_value:
+        code:
+          type: integer
+          description: The HTTP status code.
+        error:
           type: string
-          description: The API key value (only returned on creation).
-        apikey_id:
+          description: The error message.
+        detail:
           type: string
+          description: Additional error details.
+    OkResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status string.
+          example: OK
   securitySchemes:
     bearerAuth:
       type: apiKey
