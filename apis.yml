@@ -182,6 +182,9 @@ apis:
   - type: APIReference
     url: https://docs.speechmatics.com/api-ref/batch/speechmatics-asr-rest-api
 common:
+  - type: CapabilityMap
+    url: capabilities/speechmatics-capability-edges.yml
+    name: Speechmatics Business Capability Map
   - type: AgenticAccess
     url: agentic-access/speechmatics-agentic-access.yml
   - type: TrustCenter
