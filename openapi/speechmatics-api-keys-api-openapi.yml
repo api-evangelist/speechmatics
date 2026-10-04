@@ -153,17 +153,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    CreateApiKeysResponse:
-      type: object
-      required:
-      - key_value
-      - apikey_id
-      properties:
-        key_value:
-          type: string
-          description: The API key value (only returned on creation).
-        apikey_id:
-          type: string
     ApiKey:
       type: object
       required:
@@ -178,10 +167,36 @@ components:
           format: date-time
         client_ref:
           type: string
+    ErrorResponse:
+      type: object
+      required:
+      - code
+      - error
+      properties:
+        code:
+          type: integer
+          description: The HTTP status code.
+        error:
+          type: string
+          description: The error message.
+        detail:
+          type: string
+          description: Additional error details.
     ApiKeysResponse:
       type: array
       items:
         $ref: '#/components/schemas/ApiKey'
+    CreateApiKeysResponse:
+      type: object
+      required:
+      - key_value
+      - apikey_id
+      properties:
+        key_value:
+          type: string
+          description: The API key value (only returned on creation).
+        apikey_id:
+          type: string
     CreateApiKeysRequest:
       type: object
       properties:
@@ -213,21 +228,6 @@ components:
           - eu
           - usa
           - au
-    ErrorResponse:
-      type: object
-      required:
-      - code
-      - error
-      properties:
-        code:
-          type: integer
-          description: The HTTP status code.
-        error:
-          type: string
-          description: The error message.
-        detail:
-          type: string
-          description: Additional error details.
     OkResponse:
       type: object
       properties:

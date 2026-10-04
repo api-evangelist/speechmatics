@@ -188,20 +188,6 @@ components:
         name:
           type: string
           description: The new name for the project.
-    CreateProjectRequest:
-      type: object
-      required:
-      - name
-      properties:
-        contract_id:
-          type: integer
-          description: Optional contract ID for the project.
-        name:
-          type: string
-          description: The name of the project.
-        description:
-          type: string
-          description: A description of the project and its intended use.
     ProjectsResponse:
       type: array
       items:
@@ -246,6 +232,20 @@ components:
         deleted_at:
           type: string
           format: date-time
+    CreateProjectRequest:
+      type: object
+      required:
+      - name
+      properties:
+        contract_id:
+          type: integer
+          description: Optional contract ID for the project.
+        name:
+          type: string
+          description: The name of the project.
+        description:
+          type: string
+          description: A description of the project and its intended use.
   securitySchemes:
     bearerAuth:
       type: apiKey
